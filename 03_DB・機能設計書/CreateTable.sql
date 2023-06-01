@@ -25,11 +25,21 @@ CREATE TABLE comments
  not_like_count         INT NOT NULL DEFAULT 0, --低評価数
  fixed_comment          BOOLEAN NOT NULL, --固定コメント
  comment_data           DATE NOT NULL, --投稿日付
+ parent_board_id        INT, --親掲示板ID
  parent_comment_id      INT, --親コメントID
  user_id                INT NOT NULL, --会員番号
  PRIMARY KEY (board_id,comment_id),
  FOREIGN KEY (board_id) REFERENCES boards(board_id),
- FOREIGN KEY (parent_comment_id) REFERENCES comments(comment_id),
+ FOREIGN KEY (parent_board_id,parent_comment_id) REFERENCES comments(board_id,comment_id),
+ FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+-- コメント評価テーブル作成 --
+CREATE TABLE comment_evaluations
+(board_id               INT, --掲示板ID
+ comment_id             INT, --コメントID
+ user_id                INT NOT NULL, --会員番号
+ PRIMARY KEY (board_id,comment_id,user_id),
+ FOREIGN KEY (board_id,comment_id) REFERENCES comments(board_id,comment_id),
  FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 -- マップテーブル作成 --
@@ -61,7 +71,7 @@ CREATE TABLE questionary_details
  FOREIGN KEY (questionary_id) REFERENCES questionaires(questionary_id)
 );
 -- アンケート投票テーブル作成 --
-CREATE TABLE questionary_
+CREATE TABLE questionary_votes
 (questionary_id         INT, --アンケートID
  user_id                INT, --会員番号
  PRIMARY KEY (questionary_id,user_id),
