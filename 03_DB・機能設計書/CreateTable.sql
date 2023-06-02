@@ -11,7 +11,6 @@ CREATE TABLE boards
 (board_id               INT, --掲示板ID
  board_title            VARCHAR(255) NOT NULL, --タイトル
  board_tag              VARCHAR(255) NOT NULL, --タグ
- initial_comment        TEXT NOT NULL, --初期コメント
  user_id                INT NOT NULL, --会員番号
  PRIMARY KEY (board_id),
  FOREIGN KEY (user_id) REFERENCES users(user_id)
