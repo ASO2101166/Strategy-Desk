@@ -38,6 +38,7 @@ CREATE TABLE comment_evaluations
 (board_id               INT, --掲示板ID
  comment_id             INT, --コメントID
  user_id                INT NOT NULL, --会員番号
+ evaluation             BOOLEAN NOT NULL, --評価
  PRIMARY KEY (board_id,comment_id,user_id),
  FOREIGN KEY (board_id,comment_id) REFERENCES comments(board_id,comment_id),
  FOREIGN KEY (user_id) REFERENCES users(user_id)
