@@ -49,12 +49,6 @@ CREATE TABLE maps
  map_image              BLOB NOT NULL, --マップ画像
  PRIMARY KEY (map_id)
 );
--- マップ部品テーブル作成 --
-CREATE TABLE map_parts
-(map_parts_id           INT, --マップ部品ID
- map_parts_image        VARCHAR(255) NOT NULL, --マップ部品画像
- PRIMARY KEY (map_parts_id)
-);
 -- アンケートテーブル作成 --
 CREATE TABLE questionaires
 (questionary_id         INT, --アンケートID
