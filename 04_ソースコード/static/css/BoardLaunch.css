@@ -1,0 +1,34 @@
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+.main {
+    width:60%;
+    margin-top:15%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    padding-bottom: 2vh;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+.midashi {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 3vw;
+}
+
+.tag_area {
+    position: relative;
+}
+
+.delete_tag_button {
+    right: 0;
+    bottom: 8px;
+    position: absolute;
+}
