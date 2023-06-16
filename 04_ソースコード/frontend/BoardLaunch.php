@@ -14,9 +14,11 @@
             <div class="main">
                 <h2 class="midashi">掲示板立ち上げ</h2>
                 <form action="../backend/BoardCreation.php" method="post">
+                    <!-- 議題名 -->
                     <div class="mt-3 mb-3">
                         <input name="title" class="form-control form-control-lg" type="text" placeholder="議題名" required>
                     </div>
+                    <!-- URL -->
                     <div class="mb-2">
                         <input name="URL" class="form-control form-control-sm" type="text" placeholder="関連するURL" required>
                     </div>
