@@ -8,7 +8,7 @@ public function userSelect($id){
     $ps->bindValue(1,$id,PDO::PARAM_INT);
     $ps->execute();
     $searchArray=$ps->fetchAll();
-    if(!empty($searchArray)){
+    if(isset($searchArray)){
         /*require_once 'UserInfo.php'
         $userInfo = new UserInfo();
         $userInfo = $searchArray;
