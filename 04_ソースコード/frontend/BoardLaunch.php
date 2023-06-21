@@ -18,10 +18,6 @@
                     <div class="mt-3 mb-3">
                         <input name="title" class="form-control form-control-lg" type="text" placeholder="議題名" required>
                     </div>
-                    <!-- URL -->
-                    <div class="mb-2">
-                        <input name="URL" class="form-control form-control-sm" type="text" placeholder="関連するURL" required>
-                    </div>
                     <!-- 複製用tag_area -->
                     <div align="right" id="tag_area" class="mt-3 tag_area" style="display: none;">
                         <input class="form-control" type="text" placeholder="タグ付け" >
