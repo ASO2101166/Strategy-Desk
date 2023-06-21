@@ -3,7 +3,7 @@ public function boardUserSelect($id){
     require_once 'Dbconect';
     $dbcon = new Dbconect();
     $pdo = $dbcon->dbConnect();
-    $sql = "SELECT * FROM board_table WHERE user_id = ?";
+    $sql = "SELECT * FROM boards WHERE user_id = ?";
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,$id,PDO::PARAM_INT);
     $ps->execute();
