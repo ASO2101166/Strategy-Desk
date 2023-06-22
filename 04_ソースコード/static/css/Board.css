@@ -1,3 +1,11 @@
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
 .main {
 overflow: hidden;
 }
@@ -10,13 +18,18 @@ overflow: hidden;
 }
 #map_tab {
     display: flex;
-    
+    border: 1px solid #000;
 }
 .comment_area {
-    position: absolute;
+    position: fixed;
+    overflow: scroll;
+    height: 100vh;
     width: 48vw;
     margin-left: 26vw;
     /* background-color: red; */
+}
+.comment_area::-webkit-scrollbar {
+    display: none;
 }
 .fixed_comment_area {
     position: fixed;
@@ -25,4 +38,40 @@ overflow: hidden;
     margin-left: 74vw;
     /* background-color: blue; */
     border-left: 1px solid gray;
+}
+
+.plus {
+    display: inline-block;
+    width: 20px;
+    height: 25px;
+    margin-right: 0;
+    margin-left: auto;
+    color: #000;
+    /* background-color: #000066; */
+    /* padding: 20px 10px; */
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+}
+.plus::before,.plus::after  {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    position: absolute;
+    /* right: 20px; */
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 1s;
+}
+.plus::after {
+    transform: translateY(-50%) rotate(90deg);
+    transition: transform 1s;
+}
+.plus.show::before {
+    opacity: 0;
+}
+.plus.show::after {
+    transform: translateY(-50%) rotate(180deg);
 }
