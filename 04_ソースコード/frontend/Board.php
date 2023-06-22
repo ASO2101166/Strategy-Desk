@@ -61,6 +61,16 @@
                 </div>
                 <!-- かさ増し -->
                 <div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div><div>a</div>
+                <!-- コメント送信 -->
+                <div id="comment_post_area">
+                    <form action="../backend/CommentPost.php" method="post">
+                        <textarea class="form-control" id="post_comment" rows="3"></textarea>
+                        <!-- 送信ボタン -->
+                        <button type="submit" id="comment_post_button">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
             <!-- 右エリア -->
             <div class="fixed_comment_area">
