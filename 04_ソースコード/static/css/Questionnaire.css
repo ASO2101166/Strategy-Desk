@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+}
+.questionary_area {
+    position: fixed;
+    height:100vh;
+    width: 26vw;
+    /* background-color: blue; */
+    border-right: 1px solid gray;
+}
