@@ -16,29 +16,6 @@ overflow: hidden;
     /* background-color: blue; */
     border-right: 1px solid gray;
 }
-#map_tab {
-    display: flex;
-    border: 1px solid #000;
-}
-.comment_area {
-    position: fixed;
-    overflow: scroll;
-    height: 100vh;
-    width: 48vw;
-    margin-left: 26vw;
-    /* background-color: red; */
-}
-.comment_area::-webkit-scrollbar {
-    display: none;
-}
-.fixed_comment_area {
-    position: fixed;
-    height:100vh;
-    width: 26vw;
-    margin-left: 74vw;
-    /* background-color: blue; */
-    border-left: 1px solid gray;
-}
 
 .plus {
     display: inline-block;
@@ -75,3 +52,63 @@ overflow: hidden;
 .plus.show::after {
     transform: translateY(-50%) rotate(180deg);
 }
+#map_tab {
+    display: flex;
+    border: 1px solid #000;
+}
+#questionary_tab {
+    
+    display: flex;
+    border: 1px solid #000;
+}
+/* コメントここから */
+.comment_area {
+    position: fixed;
+    overflow: scroll;
+    height: 100vh;
+    width: 48vw;
+    margin-left: 26vw;
+    /* background-color: red; */
+}
+.comment_area::-webkit-scrollbar {
+    display: none;
+}
+.comment {
+    border-bottom: 1px solid gray;
+}
+.comment_info {
+    display: flex;
+    font-weight: 500;
+}
+.comment_user {
+    margin-left: 5px;
+}
+.comment_date {
+    margin-left: 5px;
+}
+/* コメントここまで */
+/* 固定コメントここから */
+.fixed_comment_area {
+    position: fixed;
+    height:100vh;
+    width: 26vw;
+    margin-left: 74vw;
+    /* background-color: blue; */
+    border-left: 1px solid gray;
+}
+#fixed_toggle_button {
+    display: flex;
+    width: 52px;
+    height: 25px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+.arrow_icon {
+    color: gray;
+    margin-left: 1px;
+}
+.fixed_comment {
+    border-bottom: 1px solid gray;
+}
+/* 固定コメントここまで */
