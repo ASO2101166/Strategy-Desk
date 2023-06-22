@@ -86,6 +86,35 @@ overflow: hidden;
 .comment_date {
     margin-left: 5px;
 }
+#comment_post_area {
+    width: 48vw;
+    /* height: 100px;
+    background-color: #000; */
+    bottom: 0;
+    position: fixed;
+}
+#post_comment {
+    /* width: 100%; */
+}
+textarea {
+    resize: none;
+}
+#comment_post_button {
+    /* width: 28vw; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #000;
+    z-index: 10000;
+}
+#comment_post_button:hover {
+    /* width: 28vw; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: blue;
+    z-index: 10000;
+}
 /* コメントここまで */
 /* 固定コメントここから */
 .fixed_comment_area {
