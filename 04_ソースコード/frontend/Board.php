@@ -8,10 +8,16 @@
     <meta name="description" content="ここにサイト説明を入れます">
     <link rel="stylesheet" href="../static/css/Board.css">
     <style>
-
+        
     </style>
     </head>
     <body>
+    <div class="parent">    
+                            <div class="child">aaa</div>
+                            <div calss="child">bbb</div>
+                            <div class="child">ccc</div>
+                            <div class="child">ddd</div>
+                        </div>    
         <div class="main">
             <div class="add_content_area">
                 <div id="map_tab">
