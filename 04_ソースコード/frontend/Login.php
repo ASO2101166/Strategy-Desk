@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        
         <form action="C:\xampp\htdocs\Strategy-Desk\04_ソースコード\バックエンド\LoginCheck.php" method="post">
             メールアドレス：<input type="email" name="umail"><br>
             パスワード：<input type="password"name="upsw"><br>
