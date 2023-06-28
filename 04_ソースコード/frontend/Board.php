@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+
         <meta charset="UTF-8">
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,7 @@
         <!-- ヘッダー読み込み -->
         <?php include("Headline.php")?>
         <!-- --------------- -->
+
         <div class="main">
             <!-- 左エリア -->
             <div class="add_content_area">
