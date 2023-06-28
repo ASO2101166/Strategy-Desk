@@ -8,7 +8,7 @@ CREATE TABLE users
 );
 -- 掲示板テーブルを作成 --
 CREATE TABLE boards
-(board_id               INT, -- 掲示板ID
+(board_id               INT AUTO_INCREMENT, -- 掲示板ID
  board_title            VARCHAR(255) NOT NULL, -- タイトル
  user_id                INT NOT NULL, -- 会員番号
  PRIMARY KEY (board_id),
@@ -16,15 +16,15 @@ CREATE TABLE boards
 );
 -- タグテーブルを作成 --
 CREATE TABLE tags
-(board_id               INT, -- 掲示板ID
- tag_id                 INT, -- タイトル
+(tag_id                 INT AUTO_INCREMENT, -- タイトル
  tag_name               VARCHAR(255) NOT NULL, -- タグ名
- PRIMARY KEY (board_id, tag_id),
+ board_id               INT, -- 掲示板ID
+ PRIMARY KEY (tag_id),
  FOREIGN KEY (board_id) REFERENCES boards(board_id)
 );
 -- マップテーブル作成 --
 CREATE TABLE maps
-(map_id                 INT, -- マップID
+(map_id                 INT AUTO_INCREMENT, -- マップID
  map_image              BLOB NOT NULL, -- マップ画像
  PRIMARY KEY (map_id)
 );
