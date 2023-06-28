@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="../static/css/BoardSearch.css">
     </head>
     <body>
+        <!-- ヘッダー読み込み -->
+        <?php include("Headline.php")?>
+        <!-- --------------- -->
         <div class="" style="min-height:100vh; width: 100%;">
             <div class="container">
                 <main>
-                   
-                    <p></p>
                     <div class="test" id="test">
                         <h3>test</h3>
                         <div class="parent">    
