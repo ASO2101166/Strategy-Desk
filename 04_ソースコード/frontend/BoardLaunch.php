@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="../static/css/BoardLaunch.css">
     </head>
     <body>
+        <!-- ヘッダー読み込み -->
+        <?php include("Headline.php")?>
+        <!-- --------------- -->
         <div class="container-fluid">
             <div class="main">
                 <h2 class="midashi">掲示板立ち上げ</h2>
