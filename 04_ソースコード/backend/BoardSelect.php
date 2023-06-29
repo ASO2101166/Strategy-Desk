@@ -3,7 +3,7 @@
 public function boardSelect($searchword){
     require_once 'Dbconect';
     $pdo = $dbcon->dbConnect();
-    $sql = "SELECT * FROM board_table WHERE board_title LIKE ?
+    $sql = "SELECT * FROM boards WHERE board_title LIKE ?
     OR board_id = (SELECT board_id FROM tags WHERE tag_name LIKE ?)";
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,'%'+$searchword+'%',PDO::PARAM_STR);
