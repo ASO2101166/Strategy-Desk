@@ -34,7 +34,7 @@ CREATE TABLE comments
  comment_id             INT, -- コメントID
  comment_content        TEXT NOT NULL, -- コメント内容
  fixed_comment          BOOLEAN NOT NULL DEFAULT 0, -- 固定コメント
- comment_data           DATE NOT NULL, -- 投稿日付
+ comment_date           DATE NOT NULL, -- 投稿日付
  map_id                 INT, -- マップID
  parent_board_id        INT, -- 親掲示板ID
  parent_comment_id      INT, -- 親コメントID
