@@ -1,99 +1,68 @@
-
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+br {
+    display: block;
+    content: "";
+    margin: 10px 0;
+}
+#creation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10vh;
+    width: 60vw;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+#add_launch_area {
+    position: fixed;
+    left: calc(50% - 70vw/2);
+}
+#launch_background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0,0,0,0.74);
+}
 .test {
     width: 70vw;
-    height: 15vh;
+    /* height: 15vh; */
+    text-align: left;
     margin-left:auto;margin-right:auto;
-    background-color: rgb(0, 255, 98);
+    background-color: lightgrey; 
     border: 1px solid #000;
 }
 
-
+.board_form_button{
+    width: 100%;
+    text-align: left;
+}
 .child {
     /* float: left; */
-    margin-right: 10px;
+    /* margin-right: 10px; */
     /* padding-right: 10px; */
 }
 
 .parent {
     text-align: center;
-    line-height: 100px;
-    width: 100px;
-    height: 100px;
+    /* line-height: 100px; */
+    /* width: 100px; */
+    /* height: 100px; */
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    gap: 40px 40px;
-}
-
-.test2 {
-    width: 70vw;
-    height: 15vh;
-    margin-left:auto;margin-right:auto;
-    background-color: rgb(0, 255, 98);
-}
-
-.child2 {
-    /* float: left; */
-    margin-right: 10px;
-    /* padding-right: 10px; */
-}
-
-.parent2 {
-    text-align: center;
-    line-height: 100px;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    gap: 20px;
-    gap: 40px 40px;
-}
-
-.test3 {
-    width: 70vw;
-    height: 15vh;
-    margin-left:auto;margin-right:auto;
-    background-color: rgb(0, 255, 98);
-}
-
-.child3 {
-    /* float: left; */
-    margin-right: 10px;
-    /* padding-right: 10px; */
-}
-
-.parent3 {
-    text-align: center;
-    line-height: 100px;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    gap: 20px;
-    gap: 40px 40px;
-}
-
-.test4 {
-    width: 70vw;
-    height: 15vh;
-    margin-left:auto;margin-right:auto;
-    background-color: rgb(0, 255, 98);
-}
-
-.child4 {
-    /* float: left; */
-    margin-right: 10px;
-    /* padding-right: 10px; */
-}
-
-.parent4 {
-    text-align: center;
-    line-height: 100px;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    gap: 20px;
-    gap: 40px 40px;
-}
-
-.creation{
-    font-size: 200%;
-    margin-left:auto;margin-right:auto;
+    /* gap: 40px 40px; */
 }
