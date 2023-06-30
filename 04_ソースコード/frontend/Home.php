@@ -15,74 +15,99 @@
         <!-- ヘッダー読み込み -->
         <?php include("Headline.php")?>
         <!-- --------------- -->
-        <div class="container-fluid">
-            <button id="creation" type="button">
-                <div>掲示板立ち上げ</div>
-            </button>
-            <!-- 掲示板立ち上げ画面表示 -->
-            <div id="launch_background" hidden="true"></div>
-            <div id="add_launch_area" hidden="true">
-                <?php include("BoardLaunch.php")?>
+        <div id="main"> 
+            <div id="main_area">
+                <button id="creation" type="button">
+                    <div>掲示板立ち上げ</div>
+                </button>
+                <!-- 掲示板立ち上げ画面表示 -->
+                <div id="launch_background" hidden="true"></div>
+                <div id="add_launch_area" hidden="true">
+                    <?php include("BoardLaunch.php")?>
+                </div>
+                <!-- --------------------- -->
+                <br>
+                <main>
+                    <div class="home_board_area">
+                        <form action="" method="post">
+                            <button class="board_form_button" type="submit">
+                                <h3>test</h3>
+                                <div class="home_tag_area">
+                                    <div class="home_tag">aaa</div>
+                                    <div calss="home_tag">bbb</div>
+                                    <div class="home_tag">ccc</div>
+                                    <div class="home_tag">ddd</div>
+                                </div>    
+                            </button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="home_board_area">
+                        <form action="" method="post">
+                            <button class="board_form_button" type="submit">
+                                <h3>test</h3>
+                                <div class="home_tag_area">
+                                    <div class="home_tag">aaa</div>
+                                    <div calss="home_tag">bbb</div>
+                                    <div class="home_tag">ccc</div>
+                                </div>    
+                            </button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="home_board_area">
+                        <form action="" method="post">
+                            <button class="board_form_button" type="submit">
+                                <h3>test</h3>
+                                <div class="home_tag_area">
+                                    <div class="home_tag">aaa</div>
+                                    <div calss="home_tag">bbb</div>
+                                </div>    
+                            </button>
+                        </form>
+                    </div>
+                    <br>
+                    <div class="home_board_area">
+                        <form action="" method="post">
+                            <button class="board_form_button" type="submit">
+                                <h3>test</h3>
+                                <div class="home_tag_area">
+                                    <div class="home_tag">aaa</div>
+                                    <div calss="home_tag">bbb</div>
+                                    <div class="home_tag">ccc</div>
+                                    <div class="home_tag">ddd</div>
+                                    <div class="home_tag">eee</div>
+                                </div>    
+                            </button>
+                        </form>
+                    </div>
+                </main>
             </div>
-            <!-- --------------------- -->
-            <br>
-            <main>
-                <div class="test">
-                    <form action="" method="post">
-                        <button class="board_form_button" type="submit">
-                            <h3>test</h3>
-                            <div class="parent">
-                                <div class="child">aaa</div>
-                                <div calss="child">bbb</div>
-                                <div class="child">ccc</div>
-                                <div class="child">ddd</div>
-                            </div>    
+            <div id="my_board_area">
+                <h3>自作掲示板</h3>
+                <div class="my_board">
+                    <form>
+                        <button class="my_board_form_button" type="submit">
+                            <div class="my_board_title">こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは</div>
                         </button>
                     </form>
                 </div>
-                <br>
-                <div class="test">
-                    <form action="" method="post">
-                        <button class="board_form_button" type="submit">
-                            <h3>test</h3>
-                            <div class="parent">
-                                <div class="child">aaa</div>
-                                <div calss="child">bbb</div>
-                                <div class="child">ccc</div>
-                            </div>    
+                <div class="my_board">
+                    <form>
+                        <button class="my_board_form_button" type="submit">
+                            <div class="my_board_title">こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは</div>
                         </button>
                     </form>
                 </div>
-                <br>
-                <div class="test">
-                    <form action="" method="post">
-                        <button class="board_form_button" type="submit">
-                            <h3>test</h3>
-                            <div class="parent">
-                                <div class="child">aaa</div>
-                                <div calss="child">bbb</div>
-                            </div>    
+                <div class="my_board">
+                    <form>
+                        <button class="my_board_form_button" type="submit">
+                            <div class="my_board_title">こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは</div>
                         </button>
                     </form>
                 </div>
-                <br>
-                <div class="test">
-                    <form action="" method="post">
-                        <button class="board_form_button" type="submit">
-                            <h3>test</h3>
-                            <div class="parent">
-                                <div class="child">aaa</div>
-                                <div calss="child">bbb</div>
-                                <div class="child">ccc</div>
-                                <div class="child">ddd</div>
-                                <div class="child">eee</div>
-                            </div>    
-                        </button>
-                    </form>
-                </div>
-            </main>
+            </div>
         </div>
-
         <script src="../static/js/Home.js"></script>
     </body>
 </html>

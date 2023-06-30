@@ -11,6 +11,29 @@ br {
     content: "";
     margin: 10px 0;
 }
+#main {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+#my_board_area {
+    width: 13%;
+    margin-right: 1%;
+    position: absolute;
+    right: 0;
+}
+.my_board {
+    margin-bottom: 1%;;
+    background-color: lightgray;
+    border: 1px solid #000;
+}
+.my_board_form_button {
+    width: 100%;
+}
+.my_board_title {
+    text-align: left;
+    overflow-wrap:break-word;
+}
 #creation {
     display: flex;
     align-items: center;
@@ -26,6 +49,7 @@ br {
 #add_launch_area {
     position: fixed;
     left: calc(50% - 70vw/2);
+    z-index: 5000;
 }
 #launch_background {
     position: absolute;
@@ -36,10 +60,10 @@ br {
     width: 100vw;
     min-height: 100vh;
     background-color: rgba(0,0,0,0.74);
+    z-index: 4999;
 }
-.test {
+.home_board_area {
     width: 70vw;
-    /* height: 15vh; */
     text-align: left;
     margin-left:auto;margin-right:auto;
     background-color: lightgrey; 
@@ -50,19 +74,12 @@ br {
     width: 100%;
     text-align: left;
 }
-.child {
-    /* float: left; */
-    /* margin-right: 10px; */
-    /* padding-right: 10px; */
-}
+.home_tag {
 
-.parent {
+}
+.home_tag_area {
     text-align: center;
-    /* line-height: 100px; */
-    /* width: 100px; */
-    /* height: 100px; */
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    /* gap: 40px 40px; */
 }
