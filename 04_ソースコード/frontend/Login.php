@@ -21,8 +21,13 @@
             <h1>ログイン</h1>
         <p>メールアドレス、パスワードをご入力の上</p>
         <p>「ログイン」ボタンをクリックしてください。</p>
+<<<<<<< Updated upstream
         メールアドレス<input type="email" name="umail"><br>
             パスワード<input type="password"name="upsw"><br>
+=======
+        メールアドレス：<input type="email" name="umail"><br>
+            パスワード：<input type="password"name="upsw"><br>
+>>>>>>> Stashed changes
         </div>
             <input type="submit"value="ログイン">
         </form>
