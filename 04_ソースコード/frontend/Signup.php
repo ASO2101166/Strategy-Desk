@@ -15,11 +15,11 @@
             <div class="Login_form">
             <h1>新規登録</h1>
         <p>メールアドレス、パスワードをご入力の上</p>
-        <p>「ログイン」ボタンをクリックしてください。</p>
+        <p>「新規登録」ボタンをクリックしてください。</p>
         メールアドレス<input type="email" name="umail"><br>
             パスワード<input type="password"name="upsw"><br>
         </div>
-            <input type="submit"value="ログイン">
+            <input type="submit"value="新規登録">
         </form>
         <script src="../static/js/Signup.js"></script>
     </body>
