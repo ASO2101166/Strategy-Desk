@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once"Dbconect.php";
-    $dbm=new Dbconect();
+    $dbm=new dbConnect();
     $userData=$dbm->cheLoginByMailAndPass($_POST['umail'],$_POST['upsw']);
     foreach($userData as $row){
         $_SESSION['usermail']=$row['user_mail'];
