@@ -10,8 +10,7 @@ public function userSelect($id){
     $searchArray=$ps->fetchAll();
     if(isset($searchArray)){
         /*require_once 'UserInfo.php'
-        $userInfo = new UserInfo();
-        $userInfo = $searchArray;
+        construct($searchArray['user_name'],$searchArray['user_id'])
         return $userInfo;*/
         return $searchArray;
     }else{
