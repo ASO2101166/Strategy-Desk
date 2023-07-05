@@ -34,11 +34,22 @@
             </div>
             <!-- 中央エリア -->
             <div class="comment_area">
+                <?php
+                    
+                    // foreach(){
+
+                    // }
+                ?>
                 <div class="comment">
                     <div class="comment_info">
                         <div class="comment_number">1</div>
                         <div class="comment_user">志水太郎</div>
                         <div class="comment_date">2023/06/22 10:12</div>
+                        <button class="add_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <div class="comment_text">・こんにちは</div>
@@ -49,6 +60,11 @@
                         <div class="comment_number">2</div>
                         <div class="comment_user">杉本太郎</div>
                         <div class="comment_date">2023/06/22 10:17</div>
+                        <button class="add_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <div class="comment_text">・こんばんは</div>
@@ -59,6 +75,11 @@
                         <div class="comment_number">3</div>
                         <div class="comment_user">髙橋太郎</div>
                         <div class="comment_date">2023/06/22 10:22</div>
+                        <button class="add_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <image src="test.png" alt></image>
@@ -70,6 +91,11 @@
                         <div class="comment_number">3</div>
                         <div class="comment_user">髙橋太郎</div>
                         <div class="comment_date">2023/06/22 10:22</div>
+                        <button class="add_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <image src="test.png" alt></image>
@@ -129,17 +155,22 @@
             </div>
             <!-- 右エリア -->
             <div class="fixed_comment_area">
-                <div id="fixed_toggle_button">
+                <button id="fixed_toggle_button">
                     <div class="arrow_icon">
-                        <i class="bi bi-arrow-up-left-circle-fill"></i>
+                        <i id="fixed_toggle_icon" class="bi bi-arrow-up-left-circle-fill"></i>
                     </div>
-                    <div>OFF</div>
-                </div>
+                    <div id="fixed_status">OFF</div>
+                </button>
                 <div class="fixed_comment">
                     <div class="comment_info">
                         <div class="comment_number">1</div>
                         <div class="comment_user">志水太郎</div>
                         <div class="comment_date">2023/06/22 10:12</div>
+                        <button id="remove_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <div class="comment_text">・こんにちは</div>
