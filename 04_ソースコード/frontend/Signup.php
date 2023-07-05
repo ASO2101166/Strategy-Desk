@@ -10,17 +10,17 @@
     </head>
     <body>
         <body>
-        
-        <form action="C:\xampp\htdocs\Strategy-Desk\04_ソースコード\バックエンド\LoginCheck.php" method="post">
-            <div class="Login_form">
-            <h1>新規登録</h1>
-        <p>メールアドレス、パスワードをご入力の上</p>
-        <p>「新規登録」ボタンをクリックしてください。</p>
-        メールアドレス<input type="email" name="umail"><br>
-            パスワード<input type="password"name="upsw"><br>
-        </div>
-            <input type="submit"value="新規登録">
-        </form>
+            <form action="C:\xampp\htdocs\Strategy-Desk\04_ソースコード\バックエンド\LoginCheck.php" method="post">
+                <div class="Login_form">
+                    <h1>新規登録</h1>
+                    <p>メールアドレス、パスワードをご入力の上</p>
+                    <p>「新規登録」ボタンをクリックしてください。</p>
+                    メールアドレス<input type="email" name="umail"><br>
+                    パスワード<input type="password"name="upsw"><br>
+                </div>
+                <input type="submit"value="新規登録">
+                <a href="Login.php">ログインはこちら</a>
+            </form>
         <script src="../static/js/Signup.js"></script>
     </body>
 </html>

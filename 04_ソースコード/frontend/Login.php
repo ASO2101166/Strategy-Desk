@@ -15,21 +15,16 @@
         <link rel="stylesheet" href="../static/css/Login.css">
     </head>
     <body>
-        
-        <form action="C:\xampp\htdocs\Strategy-Desk\04_ソースコード\バックエンド\LoginCheck.php" method="post">
+        <form action="../LoginCheck.php" method="post">
             <div class="Login_form">
-            <h1>ログイン</h1>
-        <p>メールアドレス、パスワードをご入力の上</p>
-        <p>「ログイン」ボタンをクリックしてください。</p>
-<<<<<<< Updated upstream
-        メールアドレス<input type="email" name="umail"><br>
-            パスワード<input type="password"name="upsw"><br>
-=======
-        メールアドレス：<input type="email" name="umail"><br>
-            パスワード：<input type="password"name="upsw"><br>
->>>>>>> Stashed changes
-        </div>
-            <input type="submit"value="ログイン">
+                <h1>ログイン</h1>
+                <p>メールアドレス、パスワードをご入力の上</p>
+                <p>「ログイン」ボタンをクリックしてください。</p>
+                メールアドレス<input type="email" name="umail"><br>
+                パスワード<input type="password"name="upsw"><br>
+            </div>
+            <input type="submit" value="ログイン">
+            <a href="Signup.php">新規登録はこちら</a>
         </form>
         <script src="../static/js/Login.js"></script>
     </body>
