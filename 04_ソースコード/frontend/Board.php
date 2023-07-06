@@ -1,3 +1,7 @@
+<?php
+    setcookie('history',$board_id,time()+60*60*24*7);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>

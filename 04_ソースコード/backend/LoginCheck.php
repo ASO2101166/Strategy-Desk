@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once"Dbconect.php";
+    require_once "Dbconect.php";
     $dbm=new Dbconect();
     $userData=$dbm->cheLoginByMailAndPass($_POST['umail'],$_POST['upsw']);
     foreach($userData as $row){
