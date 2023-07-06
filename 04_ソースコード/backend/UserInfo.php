@@ -4,10 +4,10 @@
     }
     class UserInfo{
         public $user_id;
-        public $username;
-        function __construct($user_id, $username){
+        public $user_name;
+        function __construct($user_id, $user_name){
             $this->user_id = $user_id;
-            $this->username = $username;
+            $this->username = $user_name;
         }
     }
 ?>

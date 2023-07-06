@@ -22,7 +22,7 @@ body {
     font-size: 15px;
   }
   
-  form input[type = "email"],form input[type = "password"] {
+  form input[type = "text"],form input[type = "password"] {
     border: 0;
     background: none;
     display: block;
@@ -36,7 +36,7 @@ body {
     text-align: center;
   }
   
-  form input[type = "email"]:focus,form input[type = "password"]:focus {
+  form input[type = "text"]:focus,form input[type = "password"]:focus {
     width: 280px;
     background-color: #f0f8ff;
   }
@@ -60,4 +60,10 @@ body {
   form input[type = "submit"]:hover {
     background-color: #FFC122;
     border: 2px solid #FFC122;
+  }
+  .error{
+    color: #e74c3c;
+  }
+  .newcomplete {
+    color:#0b60ff
   }
