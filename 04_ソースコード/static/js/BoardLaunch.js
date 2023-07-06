@@ -4,7 +4,7 @@ window.onload = function(){
     board_creation_form = document.getElementById("board_creation_form");
     tag_area = document.getElementById("tag_area");
     add_tag_button = document.getElementById("add_tag_button");
-    add_tag_button.addEventListener("click", add_tag_area);
+    add_tag_button.firstElementChild.addEventListener("click", add_tag_area);
 }
 function add_tag_area(){
     clone_tag = tag_area.cloneNode(true);

@@ -1,5 +1,5 @@
 <?php
-    setcookie('history',$board_id,time()+60*60*24*7);
+    // setcookie('history',$board_id,time()+60*60*24*7);
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +39,29 @@
             <!-- 中央エリア -->
             <div class="comment_area">
                 <?php
-                    
-                    // foreach(){
+                    require_once '../backend/CommentSelect.php';
+                    $ClsCommentSelect = new CommentSelect();
+                    $comments = $ClsCommentSelect->commentSelect($_POST['board_id']);
+                    foreach($comments as $comment){
 
-                    // }
+                ?>
+                    <div class="comment">
+                        <div class="comment_info">
+                            <div class="comment_number"><?php echo $comment['comment_id']?></div>
+                            <div class="comment_user"><?php echo $comment['user_name']?></div>
+                            <div class="comment_date"><?php echo $comment['comment_date']?></div>
+                            <button class="add_fixed_button" hidden="true">
+                                <div class="arrow_icon">
+                                    <i class="bi bi-arrow-up-left-circle-fill"></i>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="comment_content">
+                            <div class="comment_text"><?php echo $comment['comment_content']?></div>
+                        </div>
+                    </div>
+                <?php
+                    }
                 ?>
                 <div class="comment">
                     <div class="comment_info">
