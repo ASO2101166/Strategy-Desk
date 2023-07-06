@@ -27,8 +27,8 @@
                                             FROM questionaires
                                             WHERE board_id = v_board_id);
                     SET v_questionary_detail_id = (SELECT IFNULL(MAX(questionary_detail_id) + 1, 1) AS max_questionary_detail_id
-                                                FROM questionary_details
-                                                WHERE board_id = v_board_id AND questionary_id = v_questionary_id);
+                                                   FROM questionary_details
+                                                   WHERE board_id = v_board_id AND questionary_id = v_questionary_id);
                 
                     INSERT INTO questionaires (board_id, questionary_id, questionary_title) VALUES 
                         (v_board_id, v_questionary_id, ?);
