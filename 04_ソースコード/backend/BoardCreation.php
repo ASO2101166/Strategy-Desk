@@ -38,5 +38,6 @@
     } catch (PDOException $e) {
         $pdo->rollBack();
     }
-    header('Location: ../frontend/Board.php',true, 307);
+
+    header('Location: ../frontend/Home.php',true, 307);
 ?>
