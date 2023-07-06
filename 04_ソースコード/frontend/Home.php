@@ -2,9 +2,11 @@
 <html lang="ja">
     <head>
         <?php
+            require_once '../backend/UserInfo.php';
             if(!isset($_SESSION)){
                 session_start();
             }
+            $user = unserialize($_SESSION['user']);
         ?>
         <meta charset="UTF-8">
         <title></title>
@@ -90,6 +92,24 @@
             </div>
             <div id="my_board_area">
                 <h3>自作掲示板</h3>
+                <?php
+                    require_once '../backend/BoardUserSelect.php';
+                    $ClsBoardUserSelect = new BoardUserSelect();
+                    
+                    $myBoards = $ClsBoardUserSelect->boardUserSelect($user->user_id);
+                    foreach($myBoards as $myBoard){
+                ?>
+                    <div class="my_board">
+                        <form action="Board.php" method="post">
+                            <button class="my_board_form_button" type="submit">
+                                <div class="my_board_title"><?php echo $myBoard['board_title'] ?></div>
+                            </button>
+                            <input type="hidden" name="board_id" value="<?php echo $myBoard['board_id'] ?>?">
+                        </form>
+                    </div>
+                <?php
+                    }
+                ?>
                 <div class="my_board">
                     <form>
                         <button class="my_board_form_button" type="submit">
