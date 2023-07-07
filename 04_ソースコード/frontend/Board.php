@@ -50,7 +50,7 @@
                             <div class="comment_number"><?php echo $comment['comment_id']?></div>
                             <div class="comment_user"><?php echo $comment['user_name']?></div>
                             <div class="comment_date"><?php echo $comment['comment_date']?></div>
-                            <button class="add_fixed_button" hidden="true">
+                            <button class="add_fixed_button" hidden="true" onclick="addfixedcomment(event,<?php echo $_POST['board_id'] ?>, <?php echo $comment['comment_id'] ?>)">
                                 <div class="arrow_icon">
                                     <i class="bi bi-arrow-up-left-circle-fill"></i>
                                 </div>
@@ -130,19 +130,50 @@
                     </div>
                     <div id="fixed_status">OFF</div>
                 </button>
+                <?php
+                    require_once '../backend/FixedCommentSelect.php';
+                    $ClsFixedCommentSelect = new FixedCommentSelect();
+                    $fixed_comments = $ClsFixedCommentSelect->fixedCommentSelect($_POST['board_id']);
+                    if($fixed_comments == null){
+                        $fixed_comments = [];
+                    }
+                    foreach($fixed_comments as $fixed_comment){
+
+                    
+                ?>
+
                 <div class="fixed_comment">
                     <div class="comment_info">
-                        <div class="comment_number">1</div>
-                        <div class="comment_user">志水太郎</div>
-                        <div class="comment_date">2023/06/22 10:12</div>
-                        <button id="remove_fixed_button" hidden="true">
+                        <div class="comment_number"><?php echo $fixed_comment['comment_id']?></div>
+                        <div class="comment_user"><?php echo $fixed_comment['user_name']?></div>
+                        <div class="comment_date"><?php echo $fixed_comment['comment_date']?></div>
+                        <button class="remove_fixed_button" hidden="true">
                             <div class="arrow_icon">
                                 <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
                             </div>
                         </button>
                     </div>
                     <div class="comment_content">
-                        <div class="comment_text">・こんにちは</div>
+                        <div class="comment_text"><?php echo $fixed_comment['comment_content']?></div>
+                    </div>
+                </div>
+                <?php
+                    }
+                ?>
+                <!-- 複製用固定コメント -->
+                <div id="clone_fixed_comment" style="display:none;">
+                    <div class="comment_info">
+                        <div class="comment_number"></div>
+                        <div class="comment_user"></div>
+                        <div class="comment_date"></div>
+                        <button class="remove_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="comment_content">
+                        <div class="comment_text"></div>
                     </div>
                 </div>
             </div>
@@ -150,5 +181,6 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="../static/js/Board.js"></script>
+        <script src="../static/js/FixedComment.js"></script>
     </body>
 </html>

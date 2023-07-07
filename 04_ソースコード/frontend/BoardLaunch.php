@@ -18,7 +18,7 @@
                     <input name="title" class="form-control form-control-lg" type="text" placeholder="議題名" required>
                 </div>
                 <!-- 複製用tag_area -->
-                <div align="right" id="tag_area" class="mt-3 tag_area" style="display: none;">
+                <div align="right" id="clone_tag_area" class="mt-3 tag_area" style="display: none;">
                     <input class="form-control" type="text" placeholder="タグ付け" >
                     <!-- タグ削除ボタン -->
                     <div class="delete_tag_button">
