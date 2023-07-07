@@ -1,22 +1,14 @@
 body {
-<<<<<<< Updated upstream
     background-color: #D9D9D9;
   }
   
   form {
-=======
-    background-color: #808080;
-  }
-
-form {
->>>>>>> Stashed changes
     width: 400px;
     padding: 40px 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-<<<<<<< Updated upstream
     background-color: #ffff;
     text-align: center;
   }
@@ -30,22 +22,12 @@ form {
     font-size: 15px;
   }
   
-=======
-    background-color: #00aa3b;
-    text-align: center;
-  }
-
->>>>>>> Stashed changes
-  form input[type = "email"],form input[type = "password"] {
+  form input[type = "text"],form input[type = "password"] {
     border: 0;
     background: none;
     display: block;
     margin: 20px auto;
-<<<<<<< Updated upstream
     border: 2px solid #41FF22;
-=======
-    border: 2px solid #ff69b4;
->>>>>>> Stashed changes
     padding: 15px 10px;
     width: 200px;
     outline: none;
@@ -53,34 +35,22 @@ form {
     transition: 0.25s;
     text-align: center;
   }
-<<<<<<< Updated upstream
   
-  form input[type = "email"]:focus,form input[type = "password"]:focus {
+  form input[type = "text"]:focus,form input[type = "password"]:focus {
     width: 280px;
     background-color: #f0f8ff;
   }
   
-=======
-
->>>>>>> Stashed changes
   form input[type = "submit"]{
     border: 0;
     background: none;
     display: block;
     margin: 20px auto;
-<<<<<<< Updated upstream
     border: 2px solid #FFC122;
     padding: 15px 10px;
     width: 200px;
     outline: none;
     color: black;
-=======
-    border: 2px solid #000000;
-    padding: 15px 10px;
-    width: 200px;
-    outline: none;
-    color:#000000;
->>>>>>> Stashed changes
     border-radius: 25px;
     transition: 0.25s;
     text-align: center;
@@ -88,39 +58,12 @@ form {
   }
   
   form input[type = "submit"]:hover {
-<<<<<<< Updated upstream
     background-color: #FFC122;
     border: 2px solid #FFC122;
-=======
-    background-color: #ff69b4;
-    border: 2px solid #ff69b4;
   }
-
-  form input[type = "email"]:focus,form input[type = "password"]:focus {
-    width: 280px;
-    background-color: #0000;
+  .error{
+    color: #e74c3c;
   }
-    
-
-  form h1,form p {
-    color: black(0, 0, 0);
-    font-weight: 500;
-  }
-  
-  form h1,form p {
-    color: black;
-    font-weight: 500;
-  }
-
-  .Login_form_btm {
-    padding: 10px 0;
-    background-color: #05821a;
-    margin: 10px 0;
-  }
-  
-  input {
-    width: 200px;
-    padding: 3px;
-    margin: 5px 0;
->>>>>>> Stashed changes
+  .newcomplete {
+    color:#0b60ff
   }

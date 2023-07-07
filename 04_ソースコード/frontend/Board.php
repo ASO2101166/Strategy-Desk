@@ -1,3 +1,7 @@
+<?php
+    // setcookie('history',$board_id,time()+60*60*24*7);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -34,42 +38,42 @@
             </div>
             <!-- 中央エリア -->
             <div class="comment_area">
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">1</div>
-                        <div class="comment_user">志水太郎</div>
-                        <div class="comment_date">2023/06/22 10:12</div>
+                <?php
+                    require_once '../backend/CommentSelect.php';
+                    $ClsCommentSelect = new CommentSelect();
+                    $comments = $ClsCommentSelect->commentSelect($_POST['board_id']);
+                    foreach($comments as $comment){
+
+                ?>
+                    <div class="comment">
+                        <div class="comment_info">
+                            <div class="comment_number"><?php echo $comment['comment_id']?></div>
+                            <div class="comment_user"><?php echo $comment['user_name']?></div>
+                            <div class="comment_date"><?php echo $comment['comment_date']?></div>
+                            <button class="add_fixed_button" hidden="true">
+                                <div class="arrow_icon">
+                                    <i class="bi bi-arrow-up-left-circle-fill"></i>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="comment_content">
+                            <div class="comment_text"><?php echo $comment['comment_content']?></div>
+                        </div>
                     </div>
-                    <div class="comment_content">
-                        <div class="comment_text">・こんにちは</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">2</div>
-                        <div class="comment_user">杉本太郎</div>
-                        <div class="comment_date">2023/06/22 10:17</div>
-                    </div>
-                    <div class="comment_content">
-                        <div class="comment_text">・こんばんは</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">3</div>
-                        <div class="comment_user">髙橋太郎</div>
-                        <div class="comment_date">2023/06/22 10:22</div>
-                    </div>
-                    <div class="comment_content">
-                        <image src="test.png" alt></image>
-                    </div>
-                </div>
+                <?php
+                    }
+                ?>
                 <!-- かさ増し -->
                 <div class="comment">
                     <div class="comment_info">
                         <div class="comment_number">3</div>
                         <div class="comment_user">髙橋太郎</div>
                         <div class="comment_date">2023/06/22 10:22</div>
+                        <button class="add_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <image src="test.png" alt></image>
@@ -103,23 +107,14 @@
                     </div>
                     <div class="comment_content">
                         <image src="test.png" alt></image>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">1</div>
-                        <div class="comment_user">志水太郎</div>
-                        <div class="comment_date">2023/06/22 10:12</div>
-                    </div>
-                    <div class="comment_content">
-                        <div class="comment_text">・こんにちは</div>
                     </div>
                 </div>
                 <div style="height: 20%;"></div>
                 <!-- コメント送信 -->
                 <div id="comment_post_area">
                     <form action="../backend/CommentPost.php" method="post">
-                        <textarea class="form-control" id="post_comment" rows="1" placeholder="コメントを記入"></textarea>
+                        <input type="hidden" name="board_id" value="<?php echo $_POST['board_id']?>">
+                        <textarea class="form-control" name="post_comment" id="post_comment" rows="1" placeholder="コメントを記入"></textarea>
                         <!-- 送信ボタン -->
                         <button type="submit" id="comment_post_button">
                             <i class="bi bi-send"></i>
@@ -129,17 +124,22 @@
             </div>
             <!-- 右エリア -->
             <div class="fixed_comment_area">
-                <div id="fixed_toggle_button">
+                <button id="fixed_toggle_button">
                     <div class="arrow_icon">
-                        <i class="bi bi-arrow-up-left-circle-fill"></i>
+                        <i id="fixed_toggle_icon" class="bi bi-arrow-up-left-circle-fill"></i>
                     </div>
-                    <div>OFF</div>
-                </div>
+                    <div id="fixed_status">OFF</div>
+                </button>
                 <div class="fixed_comment">
                     <div class="comment_info">
                         <div class="comment_number">1</div>
                         <div class="comment_user">志水太郎</div>
                         <div class="comment_date">2023/06/22 10:12</div>
+                        <button id="remove_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
+                            </div>
+                        </button>
                     </div>
                     <div class="comment_content">
                         <div class="comment_text">・こんにちは</div>

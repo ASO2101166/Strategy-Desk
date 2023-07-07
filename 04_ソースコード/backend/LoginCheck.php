@@ -1,14 +1,22 @@
 <?php
-    session_start();
-    require_once"Dbconect.php";
-    $dbm=new Dbconect();
-    $userData=$dbm->cheLoginByMailAndPass($_POST['umail'],$_POST['upsw']);
-    foreach($userData as $row){
-        $_SESSION['usermail']=$row['user_mail'];
-        $_SESSION['username']=$row['user_name'];
-        header('Location:Home.php');
+    if(!isset($_SESSION)){
+        session_start();
     }
-    if(count($userData)==0){
-        header('Location:Login.php');
+    require_once 'SessionCheck.php';
+    require_once 'UserSelect.php';
+
+    $ClsUserSelect = new UserSelect();
+    $ClsSessionCheck = new SessionCheck();
+    if($ClsSessionCheck->usersessioncheck() == true){
+        header('Location: ../frontend/Home.php',true, 307);
+        exit();
+    }else{
+        if($ClsUserSelect->userselectbynamepass($_POST['uname'], $_POST['upwd'])){
+            header('Location: ../frontend/Home.php',true, 307);
+            exit();
+        }else{
+            header('Location: ../frontend/Login.php?error',true, 307);
+            exit();
+        }
     }
 ?>

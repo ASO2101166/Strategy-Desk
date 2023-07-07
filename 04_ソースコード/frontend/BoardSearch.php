@@ -10,58 +10,62 @@
     <link rel="stylesheet" href="../static/css/BoardSearch.css">
     </head>
     <body>
-        <!-- ヘッダー読み込み -->
-        <?php include("Headline.php")?>
-        <!-- --------------- -->
-        <div class="" style="min-height:100vh; width: 100%;">
-            <div class="container">
-                <main>
-                    <div class="test" id="test">
+        <main>
+            <br>
+            <div class="search_board_area">
+                <form action="" method="post">
+                    <button class="search_form_button" type="submit">
                         <h3>test</h3>
-                        <div class="parent">    
-                            <div class="child">aaa</div>
-                            <div calss="child">bbb</div>
-                            <div class="child">ccc</div>
-                            <div class="child">ddd</div>
+                        <div class="search_tag_area">
+                            <div class="search_tag">aaa</div>
+                            <div calss="search_tag">bbb</div>
+                            <div class="search_tag">ccc</div>
+                            <div class="search_tag">ddd</div>
                         </div>    
-                    </div>
-                    <p></p>
-
-                    <div class="test" id="test2">
+                    </button>
+                </form>
+            </div>
+            <br>
+            <div class="search_board_area">
+                <form action="" method="post">
+                    <button class="search_form_button" type="submit">
                         <h3>test</h3>
-                        <div class="parent2">    
-                            <div class="child2">aaa</div>
-                            <div calss="child2">bbb</div>
-                            <div class="child2">ccc</div>
+                        <div class="search_tag_area">
+                            <div class="search_tag">aaa</div>
+                            <div calss="search_tag">bbb</div>
+                            <div class="search_tag">ccc</div>
                         </div>    
-                    </div>
-
-                    <p></p>
-
-                    <div class="test" id="test3">
+                    </button>
+                </form>
+            </div>
+            <br>
+            <div class="search_board_area">
+                <form action="" method="post">
+                    <button class="search_form_button" type="submit">
                         <h3>test</h3>
-                        <div class="parent3">    
-                            <div class="child3">aaa</div>
-                            <div calss="child3">bbb</div>
+                        <div class="search_tag_area">
+                            <div class="search_tag">aaa</div>
+                            <div calss="search_tag">bbb</div>
                         </div>    
-                    </div>
-
-                    <p></p>
-
-                    <div class="test" id="test4">
+                    </button>
+                </form>
+            </div>
+            <br>
+            <div class="search_board_area">
+                <form action="" method="post">
+                    <button class="search_form_button" type="submit">
                         <h3>test</h3>
-                        <div class="parent4">    
-                            <div class="child4">aaa</div>
-                            <div calss="child4">bbb</div>
-                            <div class="child4">ccc</div>
-                            <div class="child4">ddd</div>
-                            <div class="child4">eee</div>
+                        <div class="search_tag_area">
+                            <div class="search_tag">aaa</div>
+                            <div calss="search_tag">bbb</div>
+                            <div class="search_tag">ccc</div>
+                            <div class="search_tag">ddd</div>
+                            <div class="search_tag">eee</div>
                         </div>    
-                    </div>
-                    
-                </main>
-           </div>
-        </div>
+                    </button>
+                </form>
+            </div>
+        </main>
 
         <script src=""></script>
     </body>
