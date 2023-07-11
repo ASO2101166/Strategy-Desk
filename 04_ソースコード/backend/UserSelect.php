@@ -1,4 +1,5 @@
 <?php
+public class UserSelect{
 public function userSelect($id){
     require_once 'Dbconect.php';
     $dbcon = new Dbconect();
@@ -10,11 +11,12 @@ public function userSelect($id){
     $searchArray=$ps->fetchAll();
     if(isset($searchArray)){
         /*require_once 'UserInfo.php'
-        construct($searchArray['user_name'],$searchArray['user_id'])
+        construct($searchArray['user_name'],$searchArray['user_id']);
         return $userInfo;*/
         return $searchArray;
     }else{
         return "";
     }
+}
 }
 ?>
