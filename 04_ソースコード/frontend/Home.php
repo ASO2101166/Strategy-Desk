@@ -6,7 +6,10 @@
             if(!isset($_SESSION)){
                 session_start();
             }
-            $user = unserialize($_SESSION['user']);
+            if(isset($_SESSION['user'])){
+                $user = unserialize($_SESSION['user']);
+            }
+            
         ?>
         <meta charset="UTF-8">
         <title></title>
@@ -95,8 +98,10 @@
                 <?php
                     require_once '../backend/BoardUserSelect.php';
                     $ClsBoardUserSelect = new BoardUserSelect();
-                    
-                    $myBoards = $ClsBoardUserSelect->boardUserSelect($user->user_id);
+                    $myBoards = [];
+                    if(isset($_SESSION['user'])){
+                        $myBoards = $ClsBoardUserSelect->boardUserSelect($user->user_id);
+                    }
                     foreach($myBoards as $myBoard){
                 ?>
                     <div class="my_board">
@@ -104,7 +109,7 @@
                             <button class="my_board_form_button" type="submit">
                                 <div class="my_board_title"><?php echo $myBoard['board_title'] ?></div>
                             </button>
-                            <input type="hidden" name="board_id" value="<?php echo $myBoard['board_id'] ?>?">
+                            <input type="hidden" name="board_id" value="<?php echo $myBoard['board_id'] ?>">
                         </form>
                     </div>
                 <?php

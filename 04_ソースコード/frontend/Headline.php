@@ -3,7 +3,14 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="home.php">◀</a>
-      <input id="search_form" class="form-control w-50" type="text" placeholder="掲示板検索" aria-label="default input example">
+      <div class="input-group w-50">
+        <button id="search_button" onclick="search_board()" hidden="true">
+          <span class="input-group-text" id="basic-addon1">
+            <i class="bi bi-search"></i>
+          </span>
+        </button>
+        <input type="text" id="search_form" class="form-control" placeholder="掲示板検索" aria-label="Input group example" aria-describedby="basic-addon1">
+      </div>
       <?php
         if(!isset($_SESSION)){
             session_start();
