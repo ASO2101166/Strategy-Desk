@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <meta name="description" content="ここにサイト説明を入れます">
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="../static/css/Home.css">
+        <?php
+            require_once '../backend/UserInfo.php';
+            if(!isset($_SESSION)){
+                session_start();
+            }
+            if(isset($_SESSION['user'])){
+                $user = unserialize($_SESSION['user']);
+            }
+            
+        ?>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <meta name="description" content="ここにサイト説明を入れます">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="../static/css/Home.css">
     </head>
     
     <body>
@@ -85,6 +95,26 @@
             </div>
             <div id="my_board_area">
                 <h3>自作掲示板</h3>
+                <?php
+                    require_once '../backend/BoardUserSelect.php';
+                    $ClsBoardUserSelect = new BoardUserSelect();
+                    $myBoards = [];
+                    if(isset($_SESSION['user'])){
+                        $myBoards = $ClsBoardUserSelect->boardUserSelect($user->user_id);
+                    }
+                    foreach($myBoards as $myBoard){
+                ?>
+                    <div class="my_board">
+                        <form action="Board.php" method="post">
+                            <button class="my_board_form_button" type="submit">
+                                <div class="my_board_title"><?php echo $myBoard['board_title'] ?></div>
+                            </button>
+                            <input type="hidden" name="board_id" value="<?php echo $myBoard['board_id'] ?>">
+                        </form>
+                    </div>
+                <?php
+                    }
+                ?>
                 <div class="my_board">
                     <form>
                         <button class="my_board_form_button" type="submit">

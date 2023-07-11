@@ -1,5 +1,7 @@
 <?php
     session_start();
     session_destroy();
-    header('Location:Login.php');
+    $_SESSION = array();
+    header('Location: ../frontend/Login.php', true, 307);
+    exit();
 ?>

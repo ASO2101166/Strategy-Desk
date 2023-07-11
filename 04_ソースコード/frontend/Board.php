@@ -40,56 +40,30 @@
             <!-- 中央エリア -->
             <div class="comment_area">
                 <?php
-                    
-                    // foreach(){
+                    require_once '../backend/CommentSelect.php';
+                    $ClsCommentSelect = new CommentSelect();
+                    $comments = $ClsCommentSelect->commentSelect($_POST['board_id']);
+                    foreach($comments as $comment){
 
-                    // }
                 ?>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">1</div>
-                        <div class="comment_user">志水太郎</div>
-                        <div class="comment_date">2023/06/22 10:12</div>
-                        <button class="add_fixed_button" hidden="true">
-                            <div class="arrow_icon">
-                                <i class="bi bi-arrow-up-left-circle-fill"></i>
-                            </div>
-                        </button>
+                    <div class="comment">
+                        <div class="comment_info">
+                            <div class="comment_number"><?php echo $comment['comment_id']?></div>
+                            <div class="comment_user"><?php echo $comment['user_name']?></div>
+                            <div class="comment_date"><?php echo $comment['comment_date']?></div>
+                            <button class="add_fixed_button" hidden="true" onclick="addfixedcomment(event,<?php echo $_POST['board_id'] ?>, <?php echo $comment['comment_id'] ?>)">
+                                <div class="arrow_icon">
+                                    <i class="bi bi-arrow-up-left-circle-fill"></i>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="comment_content">
+                            <div class="comment_text"><?php echo $comment['comment_content']?></div>
+                        </div>
                     </div>
-                    <div class="comment_content">
-                        <div class="comment_text">・こんにちは</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">2</div>
-                        <div class="comment_user">杉本太郎</div>
-                        <div class="comment_date">2023/06/22 10:17</div>
-                        <button class="add_fixed_button" hidden="true">
-                            <div class="arrow_icon">
-                                <i class="bi bi-arrow-up-left-circle-fill"></i>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="comment_content">
-                        <div class="comment_text">・こんばんは</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">3</div>
-                        <div class="comment_user">髙橋太郎</div>
-                        <div class="comment_date">2023/06/22 10:22</div>
-                        <button class="add_fixed_button" hidden="true">
-                            <div class="arrow_icon">
-                                <i class="bi bi-arrow-up-left-circle-fill"></i>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="comment_content">
-                        <image src="test.png" alt></image>
-                    </div>
-                </div>
+                <?php
+                    }
+                ?>
                 <!-- かさ増し -->
                 <div class="comment">
                     <div class="comment_info">
@@ -136,21 +110,12 @@
                         <image src="test.png" alt></image>
                     </div>
                 </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">1</div>
-                        <div class="comment_user">志水太郎</div>
-                        <div class="comment_date">2023/06/22 10:12</div>
-                    </div>
-                    <div class="comment_content">
-                        <div class="comment_text">・こんにちは</div>
-                    </div>
-                </div>
                 <div style="height: 20%;"></div>
                 <!-- コメント送信 -->
                 <div id="comment_post_area">
                     <form action="../backend/CommentPost.php" method="post">
-                        <textarea class="form-control" id="post_comment" rows="1" placeholder="コメントを記入"></textarea>
+                        <input type="hidden" name="board_id" value="<?php echo $_POST['board_id']?>">
+                        <textarea class="form-control" name="post_comment" id="post_comment" rows="1" placeholder="コメントを記入"></textarea>
                         <!-- 送信ボタン -->
                         <button type="submit" id="comment_post_button">
                             <i class="bi bi-send"></i>
@@ -166,19 +131,50 @@
                     </div>
                     <div id="fixed_status">OFF</div>
                 </button>
+                <?php
+                    require_once '../backend/FixedCommentSelect.php';
+                    $ClsFixedCommentSelect = new FixedCommentSelect();
+                    $fixed_comments = $ClsFixedCommentSelect->fixedCommentSelect($_POST['board_id']);
+                    if($fixed_comments == null){
+                        $fixed_comments = [];
+                    }
+                    foreach($fixed_comments as $fixed_comment){
+
+                    
+                ?>
+
                 <div class="fixed_comment">
                     <div class="comment_info">
-                        <div class="comment_number">1</div>
-                        <div class="comment_user">志水太郎</div>
-                        <div class="comment_date">2023/06/22 10:12</div>
-                        <button id="remove_fixed_button" hidden="true">
+                        <div class="comment_number"><?php echo $fixed_comment['comment_id']?></div>
+                        <div class="comment_user"><?php echo $fixed_comment['user_name']?></div>
+                        <div class="comment_date"><?php echo $fixed_comment['comment_date']?></div>
+                        <button class="remove_fixed_button" onclick="removefixedcomment(event,<?php echo $fixed_comment['board_id'] ?>, <?php echo $fixed_comment['comment_id'] ?>)" hidden="true">
                             <div class="arrow_icon">
                                 <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
                             </div>
                         </button>
                     </div>
                     <div class="comment_content">
-                        <div class="comment_text">・こんにちは</div>
+                        <div class="comment_text"><?php echo $fixed_comment['comment_content']?></div>
+                    </div>
+                </div>
+                <?php
+                    }
+                ?>
+                <!-- 複製用固定コメント -->
+                <div id="clone_fixed_comment" style="display:none;">
+                    <div class="comment_info">
+                        <div class="comment_number"></div>
+                        <div class="comment_user"></div>
+                        <div class="comment_date"></div>
+                        <button class="remove_fixed_button" hidden="true">
+                            <div class="arrow_icon">
+                                <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="comment_content">
+                        <div class="comment_text"></div>
                     </div>
                 </div>
             </div>
@@ -186,5 +182,6 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="../static/js/Board.js"></script>
+        <script src="../static/js/FixedComment.js"></script>
     </body>
 </html>
