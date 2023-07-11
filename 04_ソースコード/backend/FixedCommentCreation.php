@@ -21,7 +21,9 @@
             $res = array('comment_id'=>$fixed_comment['comment_id'],
                          'user_name'=>$fixed_comment['user_name'],
                          'comment_date'=>$fixed_comment['comment_date'],
-                         'comment_content'=>$fixed_comment['comment_content'],);
+                         'comment_content'=>$fixed_comment['comment_content'],
+                         'board_id'=>$fixed_comment['board_id'],
+                         'comment_id'=>$fixed_comment['comment_id'],);
         }else{
             $res = "Already fixed!";
         }

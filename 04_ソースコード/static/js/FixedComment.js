@@ -56,12 +56,43 @@ function addfixedcomment(e,board_id,comment_id){
             clone_tag.children[0].children[0].innerHTML = res['comment_id'];
             clone_tag.children[0].children[1].innerHTML = res['user_name'];
             clone_tag.children[0].children[2].innerHTML = res['comment_date'];
+            clone_tag.children[0].children[3].onclick = function(e) {
+                var argument1 = res['board_id'];
+                var argument2 = res['comment_id'];
+                removefixedcomment(e,argument1, argument2);
+            };
             clone_tag.children[1].children[0].innerHTML = res['comment_content'];
             clone_tag.removeAttribute("id");
             clone_tag.setAttribute("class", "fixed_comment");
             clone_tag.style.display = "block";
             clone_fixed_comment.before(clone_tag);
         }
+    })
+    .catch(error => {
+        console.log(error); // エラー表示
+    });
+}
+function removefixedcomment(e,board_id,comment_id){
+    let remove_fixed_button = e.currentTarget;
+    const data = {
+        board_id: board_id,
+        comment_id: comment_id,
+    }
+    fetch('../backend/FixedCommentDelete.php', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then((response) => {
+        if(!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }   
+        return response.json()
+    })
+    .then(res => {
+        let fixed_comment = remove_fixed_button.parentElement.parentElement;
+        fixed_comment.remove();
+        console.log(fixed_comment);
     })
     .catch(error => {
         console.log(error); // エラー表示
