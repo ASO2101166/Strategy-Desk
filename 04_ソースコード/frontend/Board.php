@@ -147,7 +147,7 @@
                         <div class="comment_number"><?php echo $fixed_comment['comment_id']?></div>
                         <div class="comment_user"><?php echo $fixed_comment['user_name']?></div>
                         <div class="comment_date"><?php echo $fixed_comment['comment_date']?></div>
-                        <button class="remove_fixed_button" hidden="true">
+                        <button class="remove_fixed_button" onclick="removefixedcomment(event,<?php echo $fixed_comment['board_id'] ?>, <?php echo $fixed_comment['comment_id'] ?>)" hidden="true">
                             <div class="arrow_icon">
                                 <i class="bi bi-arrow-up-left-circle-fill" style="color: #FFC122;"></i>
                             </div>
