@@ -1,5 +1,6 @@
 <?php
-    // setcookie('history',$board_id,time()+60*60*24*7);
+    $board_id = (empty($_SERVER["HTTPS"]) ? "http://" : "https://").$_SERVER['HTPP_HOST'].$_SERVER['REQUEST_URL'];
+    setcookie('history',$board_id,time()+60*60*24*7);
 ?>
 
 <!DOCTYPE html>
