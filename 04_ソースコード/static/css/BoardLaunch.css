@@ -24,7 +24,7 @@ button{
     font-size: 3vw;
 }
 
-.tag_area {
+#clone_tag_area {
     position: relative;
 }
 

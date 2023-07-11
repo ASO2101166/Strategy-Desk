@@ -11,6 +11,11 @@
     </head>
     <body>
         <main>
+            <?php
+                
+            ?>
+            <?php
+            ?>
             <br>
             <div class="search_board_area">
                 <form action="" method="post">
