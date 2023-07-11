@@ -14,6 +14,16 @@
             <?php
                 
             ?>
+            <div class="search_board_area">
+                <form action="board.php" method="post">
+                    <button class="search_form_button" type="submit">
+                        <h3>test</h3>
+                        <div class="search_tag_area">
+                            <div class="search_tag">aaa</div>
+                        </div>    
+                    </button>
+                </form>
+            </div>
             <?php
             ?>
             <br>
@@ -72,6 +82,6 @@
             </div>
         </main>
 
-        <script src=""></script>
+        <script src="../static/js/BoardSearch.js"></script>
     </body>
 </html>
