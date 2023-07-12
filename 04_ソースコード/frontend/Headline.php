@@ -5,11 +5,16 @@
       <a class="navbar-brand" href="home.php">◀</a>
       <div class="input-group w-50">
         <button id="search_button" onclick="search_board()" hidden="true">
-          <span class="input-group-text" id="basic-addon1">
+          <span class="input-group-text">
             <i class="bi bi-search"></i>
           </span>
         </button>
         <input type="text" id="search_form" class="form-control" placeholder="掲示板検索" aria-label="Input group example" aria-describedby="basic-addon1">
+        <button id="search_delete_button" onclick="search_delete()" hidden="true">
+          <span class="input-group-text bg-white">
+            <i class="bi bi-x-circle text-danger"></i>
+          </span>
+        </button>
       </div>
       <?php
         if(!isset($_SESSION)){
