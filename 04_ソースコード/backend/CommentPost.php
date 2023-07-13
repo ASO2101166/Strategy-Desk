@@ -12,7 +12,7 @@
                   (SELECT IFNULL(MAX(comment_id) + 1, 1) AS max_comment_id
                    FROM comments AS com 
                    WHERE board_id = ?), 
-                   ?, false, CURRENT_DATE, ?, ?, ?, ?)";
+                   ?, false, cast(NOW() AS DATETIME), ?, ?, ?, ?)";
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,$_POST['board_id'],PDO::PARAM_INT);
     $ps->bindValue(2,$_POST['board_id'],PDO::PARAM_INT);

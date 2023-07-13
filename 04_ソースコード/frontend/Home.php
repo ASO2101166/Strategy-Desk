@@ -115,27 +115,6 @@
                 <?php
                     }
                 ?>
-                <div class="my_board">
-                    <form>
-                        <button class="my_board_form_button" type="submit">
-                            <div class="my_board_title">こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="my_board">
-                    <form>
-                        <button class="my_board_form_button" type="submit">
-                            <div class="my_board_title">こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは</div>
-                        </button>
-                    </form>
-                </div>
-                <div class="my_board">
-                    <form>
-                        <button class="my_board_form_button" type="submit">
-                            <div class="my_board_title">こんにちはこんにちはこんにちはこんにちはこんにちはこんにちはこんにちは</div>
-                        </button>
-                    </form>
-                </div>
             </div>
         </div>
         <script src="../static/js/Home.js"></script>

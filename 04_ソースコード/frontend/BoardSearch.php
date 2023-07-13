@@ -12,7 +12,7 @@
     <body>
         <!-- 複製用 -->
         <div id="clone_search_board_area" class="search_board_area" hidden="true">
-            <form action="board.php" method="post">
+            <form action="Board.php" method="post">
                 <input type="hidden" name="board_id" value="">
                 <button class="search_form_button" type="submit">
                     <h3 class="search_title"></h3>
@@ -23,7 +23,7 @@
             </form>
         </div>
         <main id="search_main">
-            <!-- ここに挿入 -->
+            <!-- 複製されたものはここに挿入される -->
         </main>
         <script src="../static/js/BoardSearch.js"></script>
     </body>
