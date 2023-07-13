@@ -38,97 +38,68 @@
                 <!-- --------------------- -->
                 <br>
                 <main>
-                <div class="home_board_area">                        
-                    <?php
-                        require_once '../backend/BoardHistorySelect.php';
-                        $bhs = new BoardHistorySelect();
-                        $board_his = $bhs->boardHistorySelect();
-                        if(isset($board_his)){
-                            echo '<form action="" method="post">';
-                            echo '<button class="board_form_button" type="submit">';
-                            require_once '../backend/Dbconect.php';
-                            $dbcon = new Dbconect();
-                            $pdo = $dbcon->dbConnect();
-                            foreach($board_his as $row){                                   
-                                $sql = 'SELECT * FROM boards WHERE board_id = ?';
-                                $ps = $pdo->prepare($sql);
-                                $ps->bindValue(1,intval($row),PDO::PARAM_INT);
-                                $ps->execute();
-                                $searchboards = $ps->fetchAll();
-                                echo '<h3>'.$searchboards['board_title'].'</h3>';
-                                echo '<div class="home_tag_area">';
-                                /*$sql2 = 'SELECT tag_name FROM tags WHERE board_id = ?';
-                                $ps2 = $pdo->prepare($sql2);
-                                $ps2->bindValue(1,intval($row),PDO::PARAM_INT);
-                                $ps2->execute();
-                                $searchTags = $ps2->fetchAll();
-                                if(isset()){
-                                    foreach( as $tag_name){
-                                        echo '<div class="home_tag">'.$tag_name.'</div>';
-                                    }
-                                }*/
-                                echo '</div>';
-                                echo '</button>';
-                                echo '</form>';
+                    <div class="history_board_area">
+                        <h1>最近閲覧した掲示板</h1>
+                        <?php
+                            require_once '../backend/BoardHistorySelect.php';
+                            $bhs = new BoardHistorySelect();
+                            $board_his = $bhs->boardHistorySelect();
+                            if(isset($board_his)){
+                                $searchboards = $bhs->boardHistorySelectByHistoryBoardid($board_his);
+                        ?>        
+                        <div class="home_board_area">
+                            <form action="Board.php" method="post">
+                                <input type="hidden" name="board_id" value="<?php echo $searchboards[0]['board_id']?>">
+                                <button class="board_form_button" type="submit">
+                                    <h3><?php echo $searchboards[0]['board_title']; ?></h3>
+                                    <div class="home_tag_area">
+                                        <?php
+                                            foreach($searchboards[0]['tag_name'] as $tag_name){
+                                        ?>
+                                        <div class="home_tag"><?php echo $tag_name?></div>
+                                        <?php
+                                            }
+                                        ?>
+                                    </div>    
+                                </button>
+                            </form>
+                        </div>
+                        <?php
+                            }else{
+                        ?>
+                        <h3>履歴はありません</h3>
+                        <?php
                             }
-                        }else{
-                            echo '<h3>履歴はありません</h3>';
+                        ?>
+                    </div>
+                    <h1>最新の掲示板</h1>
+                    <?php
+                        require_once '../backend/BoardLatestSelect.php';
+                        $BoardLatestSelect = new BoardLatestSelect();
+                        $searchArray = $BoardLatestSelect->boardLatestSelect();
+                        foreach($searchArray as $row){
+                    ?>
+                    <div class="home_board_area">
+                        <form action="Board.php" method="post">
+                            <input type="hidden" name="board_id" value="<?php echo $row['board_id']?>">
+                            <button class="board_form_button" type="submit">
+                                <h3><?php echo $row['board_title']?></h3>
+                                <div class="home_tag_area">
+                                    <?php
+                                        foreach($row['tag_name'] as $tag_name){
+                                    ?>
+                                    <div class="home_tag"><?php echo $tag_name?></div>
+                                    <?php
+                                        }
+                                    ?>
+                                </div>    
+                            </button>
+                        </form>
+                    </div>
+                    <br>
+                    <?php
                         }
-                    ?>          
-                </div>
-                    <div class="home_board_area">
-                        <form action="" method="post">
-                            <button class="board_form_button" type="submit">
-                                <h3>test</h3>
-                                <div class="home_tag_area">
-                                    <div class="home_tag">aaa</div>
-                                    <div calss="home_tag">bbb</div>
-                                    <div class="home_tag">ccc</div>
-                                    <div class="home_tag">ddd</div>
-                                </div>    
-                            </button>
-                        </form>
-                    </div>
-                    <br>
-                    <div class="home_board_area">
-                        <form action="" method="post">
-                            <button class="board_form_button" type="submit">
-                                <h3>test</h3>
-                                <div class="home_tag_area">
-                                    <div class="home_tag">aaa</div>
-                                    <div calss="home_tag">bbb</div>
-                                    <div class="home_tag">ccc</div>
-                                </div>    
-                            </button>
-                        </form>
-                    </div>
-                    <br>
-                    <div class="home_board_area">
-                        <form action="" method="post">
-                            <button class="board_form_button" type="submit">
-                                <h3>test</h3>
-                                <div class="home_tag_area">
-                                    <div class="home_tag">aaa</div>
-                                    <div calss="home_tag">bbb</div>
-                                </div>    
-                            </button>
-                        </form>
-                    </div>
-                    <br>
-                    <div class="home_board_area">
-                        <form action="" method="post">
-                            <button class="board_form_button" type="submit">
-                                <h3>test</h3>
-                                <div class="home_tag_area">
-                                    <div class="home_tag">aaa</div>
-                                    <div calss="home_tag">bbb</div>
-                                    <div class="home_tag">ccc</div>
-                                    <div class="home_tag">ddd</div>
-                                    <div class="home_tag">eee</div>
-                                </div>    
-                            </button>
-                        </form>
-                    </div>
+                    ?>
                 </main>
             </div>
             <div id="my_board_area">
