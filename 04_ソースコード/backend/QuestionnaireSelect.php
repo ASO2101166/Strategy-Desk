@@ -21,16 +21,18 @@
     $ps->execute();
     $questionary_date = $ps->fetch();
     $retArray = [];
-    $retArray['board_id'] = $questionary_date['board_id'];
-    $retArray['questionary_id'] = $questionary_date['questionary_id'];
-    $retArray['questionary_title'] = $questionary_date['questionary_title'];
-    $retArray['questionary_date'] = $questionary_date['questionary_date'];
-    $retArray['questionary_status'] = $questionary_date['questionary_status'];
-    $ids = explode(",", $questionary_date['questionary_detail_ids']);
-    $details = explode(",", $questionary_date['questionary_details']);
-    for($j = 0; $j < count($ids); $j++){
-        $retArray['questionary_detail_id'][$j] = $ids[$j];
-        $retArray['questionary_detail'][$j] = $details[$j];
+    if(!$questionary_date == false){
+        $retArray['board_id'] = $questionary_date['board_id'];
+        $retArray['questionary_id'] = $questionary_date['questionary_id'];
+        $retArray['questionary_title'] = $questionary_date['questionary_title'];
+        $retArray['questionary_date'] = $questionary_date['questionary_date'];
+        $retArray['questionary_status'] = $questionary_date['questionary_status'];
+        $ids = explode(",", $questionary_date['questionary_detail_ids']);
+        $details = explode(",", $questionary_date['questionary_details']);
+        for($j = 0; $j < count($ids); $j++){
+            $retArray['questionary_detail_id'][$j] = $ids[$j];
+            $retArray['questionary_detail'][$j] = $details[$j];
+        }
     }
     $res = $retArray;
     echo json_encode($res);

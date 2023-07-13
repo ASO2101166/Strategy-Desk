@@ -56,7 +56,7 @@
 
                 ?>  
                     <?php 
-                        if(is_null($comment['questionary_id'])){
+                        if(is_null($comment['questionary_id']) || $comment['questionary_id'] == 0){
                     ?>
                     <div class="comment">
                         <div class="comment_info">
