@@ -18,25 +18,21 @@
                     <input name="title" class="form-control form-control-lg" type="text" placeholder="議題名" required>
                 </div>
                 <!-- 複製用tag_area -->
-                <div align="right" id="clone_tag_area" class="mt-3 tag_area" style="display: none;">
+                <div id="clone_tag_area" class="mt-3 tag_area" style="display: none;">
                     <input class="form-control" type="text" placeholder="タグ付け" >
                     <!-- タグ削除ボタン -->
-                    <div class="delete_tag_button">
-                        <button type="button">
-                            <i class="bi bi-dash-square" style="color: red;"></i>
-                        </button>
-                    </div>
+                    <button type="button" class="delete_tag_button" onclick="delete_tag_area(event)">
+                        <i class="bi bi-dash-square" style="color: red;"></i>
+                    </button>
                 </div>
                 <!-- 初期表示用tag_area -->
                 <div id="tag_area" class="mt-3">
                     <input name="tag[]" class="form-control" type="text" placeholder="タグ付け" required>
                 </div>
                 <!-- タグ追加ボタン -->
-                <div id="add_tag_button" align="right" class="mb-2">
-                    <button type="button">
-                        <i class="bi bi-plus-square"></i>
-                    </button>
-                </div>
+                <button id="add_tag_button" type="button">
+                    <i class="bi bi-plus-square"></i>
+                </button>
                 <!-- 初期コメント -->
                 <div class="mb-3">
                     <textarea name="first_comment" class="form-control" rows="3" placeholder="初期コメント" required></textarea>

@@ -36,7 +36,9 @@
                     <div>アンケート</div>
                     <div class="plus"></div>
                 </div>
-                <?php include("Questionnaire.php")?>
+                <div id="test" style="height: 83%; position: relative;">
+                    <?php include("Questionnaire.php")?>
+                </div>
             </div>
             <!-- 中央エリア -->
             <div class="comment_area">

@@ -60,6 +60,7 @@ CREATE TABLE questionaires
 (board_id               INT, -- 掲示板ID
  questionary_id         INT, -- アンケートID
  questionary_title      VARCHAR(255) NOT NULL, -- 題名
+ questionary_date       DATETIME NOT NULL, -- アンケート日付
  PRIMARY KEY (board_id, questionary_id),
  FOREIGN KEY (board_id) REFERENCES boards(board_id)
 );
