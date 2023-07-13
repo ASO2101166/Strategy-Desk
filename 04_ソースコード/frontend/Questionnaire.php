@@ -14,7 +14,7 @@
         <div id="create_questionary_area" style="margin: 5%;" hidden="true">
             <form action="../backend/QuestionnaireCreation.php" method="post">
                 <input type="hidden" id="board_id" name="board_id" value="<?php echo $_POST['board_id']?>">
-                <input type="text" class="form-control" name="questionary_title" placeholder="アンケート題名">
+                <input type="text" class="form-control" name="questionary_title" placeholder="アンケート題名" required>
                 <div id="questionary_detail_area">
                     <!-- 複製用tag_area -->
                     <div id="clone_questionary_detail" class="questionary_detail" style="display: none;">
@@ -26,10 +26,10 @@
                     </div>
                     <!-- 初期表示用項目名 -->
                     <div class="questionary_detail">
-                        <input type="text" name="questionary_detail[]" class="questionary_detail_text" placeholder="項目名">
+                        <input type="text" name="questionary_detail[]" class="questionary_detail_text" placeholder="項目名" required>
                     </div>
                     <div class="questionary_detail">
-                        <input type="text" name="questionary_detail[]" class="questionary_detail_text" placeholder="項目名">
+                        <input type="text" name="questionary_detail[]" class="questionary_detail_text" placeholder="項目名" required>
                     </div>
                     <!-- タグ追加ボタン -->
                     <button id="add_tag_button" type="button">
