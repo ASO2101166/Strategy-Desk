@@ -2,7 +2,9 @@
 <html lang="ja">
     <head>
         <?php
-            session_start();
+            if(!isset($_SESSION)){
+                session_start();
+            }
             require_once '../backend/UserInfo.php';
             require_once '../backend/SessionCheck.php';
             $ClsSessionCheck = new SessionCheck();
