@@ -1,6 +1,6 @@
 <?php
-    $board_id = (empty($_SERVER["HTTPS"]) ? "http://" : "https://").$_SERVER['HTPP_HOST'].$_SERVER['REQUEST_URL'];
-    setcookie('history',$board_id,time()+60*60*24*7);
+    // $board_id = (empty($_SERVER["HTTPS"]) ? "http://" : "https://").$_SERVER['HTPP_HOST'].$_SERVER['REQUEST_URL'];
+    // setcookie('history',$board_id,time()+60*60*24*7);
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +36,7 @@
                     <div>アンケート</div>
                     <div class="plus"></div>
                 </div>
+                <?php include("Questionnaire.php")?>
             </div>
             <!-- 中央エリア -->
             <div class="comment_area">
@@ -64,52 +65,6 @@
                 <?php
                     }
                 ?>
-                <!-- かさ増し -->
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">3</div>
-                        <div class="comment_user">髙橋太郎</div>
-                        <div class="comment_date">2023/06/22 10:22</div>
-                        <button class="add_fixed_button" hidden="true">
-                            <div class="arrow_icon">
-                                <i class="bi bi-arrow-up-left-circle-fill"></i>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="comment_content">
-                        <image src="test.png" alt></image>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">3</div>
-                        <div class="comment_user">髙橋太郎</div>
-                        <div class="comment_date">2023/06/22 10:22</div>
-                    </div>
-                    <div class="comment_content">
-                        <image src="test.png" alt></image>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">3</div>
-                        <div class="comment_user">髙橋太郎</div>
-                        <div class="comment_date">2023/06/22 10:22</div>
-                    </div>
-                    <div class="comment_content">
-                        <image src="test.png" alt></image>
-                    </div>
-                </div>
-                <div class="comment">
-                    <div class="comment_info">
-                        <div class="comment_number">3</div>
-                        <div class="comment_user">髙橋太郎</div>
-                        <div class="comment_date">2023/06/22 10:22</div>
-                    </div>
-                    <div class="comment_content">
-                        <image src="test.png" alt></image>
-                    </div>
-                </div>
                 <div style="height: 20%;"></div>
                 <!-- コメント送信 -->
                 <div id="comment_post_area">

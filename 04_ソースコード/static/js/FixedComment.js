@@ -52,7 +52,7 @@ function addfixedcomment(e,board_id,comment_id){
             
         }else{
             clone_fixed_comment = document.getElementById("clone_fixed_comment");
-            clone_tag = clone_fixed_comment.cloneNode(true)
+            clone_tag = clone_fixed_comment.cloneNode(true);
             clone_tag.children[0].children[0].innerHTML = res['comment_id'];
             clone_tag.children[0].children[1].innerHTML = res['user_name'];
             clone_tag.children[0].children[2].innerHTML = res['comment_date'];
