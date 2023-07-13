@@ -42,7 +42,6 @@ CREATE TABLE comments
  user_id                INT NOT NULL, -- 会員番号
  PRIMARY KEY (board_id,comment_id),
  FOREIGN KEY (board_id) REFERENCES boards(board_id),
- FOREIGN KEY (questionary_id) REFERENCES questionaires(questionary_id),
  FOREIGN KEY (map_id) REFERENCES maps(map_id),
  FOREIGN KEY (parent_board_id,parent_comment_id) REFERENCES comments(board_id,comment_id),
  FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -63,7 +62,7 @@ CREATE TABLE questionaires
  questionary_id         INT, -- アンケートID
  questionary_title      VARCHAR(255) NOT NULL, -- 題名
  questionary_date       DATETIME NOT NULL, -- アンケート日付
- questionary_status     BOOLEAN DEFAULT 0 -- アンケート状態
+ questionary_status     BOOLEAN DEFAULT 0, -- アンケート状態
  PRIMARY KEY (board_id, questionary_id),
  FOREIGN KEY (board_id) REFERENCES boards(board_id)
 );

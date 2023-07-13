@@ -28,7 +28,7 @@
                 if($searchArray['sum_votes'] == 0){
                     $searchArray['sum_votes'] = 1;
                 }
-                $retArray['questionary_percent'][$j] = $questionary_votes[$j] / $searchArray['sum_votes'];
+                $retArray['questionary_percent'][$j] = $questionary_votes[$j] / $searchArray['sum_votes'] * 100;
 
                 
             }
