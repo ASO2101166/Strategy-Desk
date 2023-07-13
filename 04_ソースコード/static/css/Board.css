@@ -141,3 +141,22 @@ textarea {
     border-bottom: 1px solid gray;
 }
 /* 固定コメントここまで */
+.comment_questionnaire {
+    margin: 1%;
+    padding: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border: 1px solid #000;
+}
+.comment_questionnaire_title {
+    
+    border: 1px solid #000;
+}
+.comment_questionnaire_detail {
+    width: 80%;
+    border: none;
+    border-radius: 15px;
+    background-color: #e7e7e7;
+    outline: none;
+    color: #1b2538;
+}

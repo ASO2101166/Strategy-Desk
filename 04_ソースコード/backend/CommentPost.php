@@ -7,12 +7,12 @@
     $user = unserialize($_SESSION['user']);
     $dbcon = new Dbconect();
     $pdo = $dbcon->dbConnect();
-    $sql = "INSERT INTO comments (board_id, comment_id, comment_content, fixed_comment, comment_date,map_id, parent_board_id, parent_comment_id, user_id)
+    $sql = "INSERT INTO comments (board_id, comment_id, comment_content, fixed_comment, comment_date, questionary_id, map_id, parent_board_id, parent_comment_id, user_id)
             VALUES(?,
                   (SELECT IFNULL(MAX(comment_id) + 1, 1) AS max_comment_id
                    FROM comments AS com 
                    WHERE board_id = ?), 
-                   ?, false, cast(NOW() AS DATETIME), ?, ?, ?, ?)";
+                   ?, false, cast(NOW() AS DATETIME), 0, ?, ?, ?, ?)";
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,$_POST['board_id'],PDO::PARAM_INT);
     $ps->bindValue(2,$_POST['board_id'],PDO::PARAM_INT);

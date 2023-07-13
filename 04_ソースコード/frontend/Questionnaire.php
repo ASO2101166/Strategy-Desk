@@ -41,12 +41,16 @@
                 </div>
             </form>
         </div>
-        <div id="select_questionary_area" style="margin: 5%;">
+        <div id="select_questionary_area" style="margin: 5%;" hidden="true">
             <div id="select_questionary_title">この中で一番いいのはどれですか？？？？？？？？？？？？？？？？？？</div>
-            <div id="select_questionary_detail_area">
-                
-            </div>
+            
         </div>
+        <!-- 複製用 -->
+        <button id="clone_select_questionary_detail_area" class="select_questionary_detail_area" hidden="true">
+            <input type="hidden" value="">
+            <div class="select_questionary_detail"></div>
+        </button>
+        <p id="time"></p>
         <script src="../static/js/Questionnaire.js"></script>
     </body>
 </html>
