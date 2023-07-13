@@ -11,16 +11,42 @@
     <link rel="stylesheet" href="../static/css/Questionnaire.css">
     </head>
     <body>
-        <div class="questionary_area">
-            <!-- この中↓を編集 -->
-            <div id="">
-                <input type="text" class="form-control">
-            </div>
-            
-
-            <button type="button" class="btn">⇗</button>
-            <!-- この中↑を編集 -->
+        <div id="create_questionary_area" style="margin: 5%;" hidden="true">
+            <form action="../backend/QuestionnaireCreation.php" method="post">
+                <input type="hidden" id="board_id" name="board_id" value="<?php echo $_POST['board_id']?>">
+                <input type="text" class="form-control" name="questionary_title" placeholder="アンケート題名">
+                <div id="questionary_detail_area">
+                    <!-- 複製用tag_area -->
+                    <div id="clone_questionary_detail" class="questionary_detail" style="display: none;">
+                        <input type="text" class="questionary_detail_text" placeholder="項目名">
+                        <!-- タグ削除ボタン -->
+                        <button type="button" class="delete_questionary_detail_button" onclick="delete_questionary_detail(event)">
+                            <i class="bi bi-dash-square" style="color: red;"></i>
+                        </button>
+                    </div>
+                    <!-- 初期表示用項目名 -->
+                    <div class="questionary_detail">
+                        <input type="text" name="questionary_detail[]" class="questionary_detail_text" placeholder="項目名">
+                    </div>
+                    <div class="questionary_detail">
+                        <input type="text" name="questionary_detail[]" class="questionary_detail_text" placeholder="項目名">
+                    </div>
+                    <!-- タグ追加ボタン -->
+                    <button id="add_tag_button" type="button">
+                        <i class="bi bi-plus-square"></i>
+                    </button>
+                    <button type="submit" class="questionary_submit_btn">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </div>
+            </form>
         </div>
-        <script src=""></script>
+        <div id="select_questionary_area" style="margin: 5%;">
+            <div id="select_questionary_title">この中で一番いいのはどれですか？？？？？？？？？？？？？？？？？？</div>
+            <div id="select_questionary_detail_area">
+                
+            </div>
+        </div>
+        <script src="../static/js/Questionnaire.js"></script>
     </body>
 </html>

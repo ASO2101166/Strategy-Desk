@@ -23,12 +23,16 @@ button{
     text-align: center;
     font-size: 3vw;
 }
-
+#add_tag_button {
+    display: block;
+    margin-left: auto;
+}
 #clone_tag_area {
     position: relative;
 }
 
 .delete_tag_button {
+    display: block;
     right: 0;
     bottom: 8px;
     position: absolute;
