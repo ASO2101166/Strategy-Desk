@@ -38,6 +38,44 @@
                 <!-- --------------------- -->
                 <br>
                 <main>
+                <div class="home_board_area">                        
+                    <?php
+                        require_once '../backend/BoardHistorySelect.php';
+                        $bhs = new BoardHistorySelect();
+                        $board_his = $bhs->boardHistorySelect();
+                        if(isset($board_his)){
+                            echo '<form action="" method="post">';
+                            echo '<button class="board_form_button" type="submit">';
+                            require_once '../backend/Dbconect.php';
+                            $dbcon = new Dbconect();
+                            $pdo = $dbcon->dbConnect();
+                            foreach($board_his as $row){                                   
+                                $sql = 'SELECT * FROM boards WHERE board_id = ?';
+                                $ps = $pdo->prepare($sql);
+                                $ps->bindValue(1,intval($row),PDO::PARAM_INT);
+                                $ps->execute();
+                                $searchboards = $ps->fetchAll();
+                                echo '<h3>'.$searchboards['board_title'].'</h3>';
+                                echo '<div class="home_tag_area">';
+                                /*$sql2 = 'SELECT tag_name FROM tags WHERE board_id = ?';
+                                $ps2 = $pdo->prepare($sql2);
+                                $ps2->bindValue(1,intval($row),PDO::PARAM_INT);
+                                $ps2->execute();
+                                $searchTags = $ps2->fetchAll();
+                                if(isset()){
+                                    foreach( as $tag_name){
+                                        echo '<div class="home_tag">'.$tag_name.'</div>';
+                                    }
+                                }*/
+                                echo '</div>';
+                                echo '</button>';
+                                echo '</form>';
+                            }
+                        }else{
+                            echo '<h3>履歴はありません</h3>';
+                        }
+                    ?>          
+                </div>
                     <div class="home_board_area">
                         <form action="" method="post">
                             <button class="board_form_button" type="submit">

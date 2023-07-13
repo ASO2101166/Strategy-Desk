@@ -1,7 +1,7 @@
 <?php
     class Dbconect{
         public function dbConnect(){
-            $pdo = new PDO('mysql:host=localhost;dbname=Strategy_Desk;charset=utf8','webuser','abccsd2');
+            $pdo = new PDO('mysql:host=localhost;dbname=strategy_desk;charset=utf8','root','root');
             return $pdo;
         }
     }
