@@ -34,8 +34,8 @@
             $searchquestionary_detail_id = $ps2->fetch();
             $questionary_detail_id = $searchquestionary_detail_id['max_questionary_detail_id'];
 
-            $sql3 = "INSERT INTO questionaires (board_id, questionary_id, questionary_title, questionary_date) VALUES 
-                    (?, ?, ?, cast(NOW() AS DATETIME))";
+            $sql3 = "INSERT INTO questionaires (board_id, questionary_id, questionary_title, questionary_date, questionary_status) VALUES 
+                    (?, ?, ?, cast(NOW() AS DATETIME), 1)";
             $ps3 = $pdo->prepare($sql3);
             $ps3->bindValue(1, $board_id, PDO::PARAM_INT);
             $ps3->bindValue(2, $questionary_id, PDO::PARAM_INT);
@@ -48,7 +48,7 @@
                 $ps4->bindValue(1, $board_id, PDO::PARAM_INT);
                 $ps4->bindValue(2, $questionary_id, PDO::PARAM_INT);
                 $ps4->bindValue(3, $questionary_detail_id, PDO::PARAM_INT);
-                $ps4->bindValue(4, $questionary_detail[$i-1], PDO::PARAM_INT);
+                $ps4->bindValue(4, $questionary_detail[$i-1], PDO::PARAM_STR);
                 $ps4->execute();
                 $questionary_detail_id++;
             }
@@ -57,5 +57,5 @@
             $pdo->rollBack();
         }
     }
-    
+    header('Location: ../frontend/Board.php',true, 307);
 ?>

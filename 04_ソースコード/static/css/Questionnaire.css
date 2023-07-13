@@ -61,3 +61,11 @@ button{
   background-color: aqua;
   word-break: break-word;
 }
+.select_questionary_detail_area {
+  margin-top: 2%;
+  width: 100%;
+  border: none;
+	border-radius: 15px;
+  background-color: #e7e7e7;
+	color: #1b2538;
+}

@@ -1,5 +1,12 @@
 <?php
     setcookie('history',$_POST['board_id'],time()+60*60*24*7);
+    require_once '../backend/UserInfo.php';
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    if(isset($_SESSION['user'])){
+        $user = unserialize($_SESSION['user']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +28,7 @@
         <!-- ヘッダー読み込み -->
         <?php include("Headline.php")?>
         <!-- --------------- -->
-
+        <input type="hidden" id="user_id" value="<?php echo $user->user_id?>">
         <div class="main">
             <!-- 左エリア -->
             <div class="add_content_area">
@@ -47,7 +54,10 @@
                     $comments = $ClsCommentSelect->commentSelect($_POST['board_id']);
                     foreach($comments as $comment){
 
-                ?>
+                ?>  
+                    <?php 
+                        if(is_null($comment['questionary_id'])){
+                    ?>
                     <div class="comment">
                         <div class="comment_info">
                             <div class="comment_number"><?php echo $comment['comment_id']?></div>
@@ -63,6 +73,29 @@
                             <div class="comment_text"><?php echo $comment['comment_content']?></div>
                         </div>
                     </div>
+                    <?php
+                        }else{
+                            require_once '../backend/QuestionnaireCommentSelect.php';
+                            $ClsQuestionnaireCommentSelect = new QuestionnaireCommentSelect();
+                            $searchArray = $ClsQuestionnaireCommentSelect->questionnaireCommentSelect($_POST['board_id'], $comment['questionary_id']);
+                    ?>
+                    <div class="comment_questionnaire">
+                        <h3 class="comment_questionnaire_title"><?php echo $searchArray['questionary_title']?></h3>
+                        <?php
+                            for($i = 0; $i < count($searchArray['questionary_detail']); $i++){
+                        ?>
+                        <div style="display: flex;">
+                            <div class="comment_questionnaire_detail"><?php echo $searchArray['questionary_detail'][$i]?></div>
+                            <div><?php echo $searchArray['questionary_votes'][$i]."票".$searchArray['questionary_percent'][$i]."%"?></div>
+                        </div>
+                        <?php
+                            }
+                        ?>
+                    </div>
+                    <div style="border-bottom: 1px solid gray;"></div>
+                    <?php
+                        }
+                    ?>
                 <?php
                     }
                 ?>
