@@ -36,16 +36,16 @@
             <!-- 左エリア -->
             <div class="add_content_area">
                 <!-- マップを開くタグ --->
-                <div id="map_tab">
+                <!-- <div id="map_tab">
                     <div>マップ</div>
                     <div class="plus"></div>
-                </div>
+                </div> -->
                 <!-- アンケートを開くタグ -->
-                <div id="questionary_tab">
+                <!-- <div id="questionary_tab">
                     <div>アンケート</div>
                     <div class="plus"></div>
-                </div>
-                <div id="test" style="height: 83%; position: relative;">
+                </div> -->
+                <div id="test" style="height: 90%; position: relative;">
                     <?php include("Questionnaire.php")?>
                 </div>
             </div>
@@ -63,10 +63,10 @@
                     ?>
                     <div class="comment">
                         <div class="comment_info">
-                            <div class="comment_number"><?php echo $comment['comment_id']?></div>
-                            <div class="comment_user"><?php echo $comment['user_name']?></div>
-                            <div class="comment_date"><?php echo $comment['comment_date']?></div>
-                            <button class="add_fixed_button" hidden="true" onclick="addfixedcomment(event,<?php echo $_POST['board_id'] ?>, <?php echo $comment['comment_id'] ?>)">
+                            <div class="comment_number">ID:<?php echo $comment['comment_id']?></div>
+                            <div class="comment_user">名前:<?php echo $comment['user_name']?></div>
+                            <div class="comment_date">時間:<?php echo $comment['comment_date']?></div>
+                            <button class="add_fixed_button" hidden="true" onclick="addfixedcomment(event,<?php echo $_POST['board_id'] ?>, <?php echo $comment['comment_id'] ?>, <?php echo $user_id?>)">
                                 <div class="arrow_icon" style="color:<?php if($comment['fixed_comment'] == 1){echo '#FFC122';}?>;">
                                     <i class="bi bi-arrow-up-left-circle-fill"></i>
                                 </div>
@@ -83,11 +83,12 @@
                             $searchArray = $ClsQuestionnaireCommentSelect->questionnaireCommentSelect($_POST['board_id'], $comment['questionary_id'], $user_id);
                     ?>
                     <div class="comment_questionnaire">
+                        <div>ID:<?php echo $comment['comment_id'];?></div>
                         <h3 class="comment_questionnaire_title"><?php echo $searchArray['questionary_title']?></h3>
                         <?php
                             for($i = 0; $i < count($searchArray['questionary_detail']); $i++){
                         ?>
-                        <div style="display: flex;">
+                        <div style="display: flex; margin-bottom:1%;">
                             <div class="comment_questionnaire_detail <?php if($searchArray['user_questionary_detail_id'] == $searchArray['questionary_detail_id'][$i]){echo "user_vote";}?>"><?php echo $searchArray['questionary_detail'][$i]?></div>
                             <div><?php echo $searchArray['questionary_votes'][$i]."票".round($searchArray['questionary_percent'][$i], 1)."%"?></div>
                         </div>
@@ -186,7 +187,21 @@
                     <div class="comment_content">
                         <div class="comment_text"></div>
                     </div>
+                    <div id="fixed_evalution_area">
+                        <input class="fixed_comment_user_evaluation" type="hidden" value="">
+                        <button class="fixed_good" onclick="fixedCommentGood()">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                            <i class="bi bi-hand-thumbs-up-fill" style="color:red;"></i>
+                            <span class="evaluation_count_good"></span>
+                        </button>
+                        <button class="fixed_bad" onclick="fixedCommentBad()">
+                            <i class="bi bi-hand-thumbs-down"></i>
+                            <i class="bi bi-hand-thumbs-down-fill" style="color:blue;"></i>
+                            <span class="evaluation_count_bad"></span>
+                        </button>
+                    </div>
                 </div>
+                <div style="height:10%;"></div>
             </div>
 
         </div>

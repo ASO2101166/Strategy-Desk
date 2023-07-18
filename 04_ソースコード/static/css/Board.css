@@ -123,7 +123,11 @@ textarea {
     width: 26vw;
     margin-left: 74vw;
     /* background-color: blue; */
+    overflow:scroll ;
     border-left: 1px solid gray;
+}
+.fixed_comment_area::-webkit-scrollbar {
+    display: none;
 }
 #fixed_toggle_button {
     display: flex;

@@ -4,6 +4,10 @@
     }
     require_once 'Dbconect.php';
     require_once 'UserInfo.php';
+    if(!isset($_SESSION['user'])){
+        header('Location: ../frontend/Login.php',true, 307);
+        exit();
+    }
     $user = unserialize($_SESSION['user']);
     $dbcon = new Dbconect();
     $pdo = $dbcon->dbConnect();
@@ -38,4 +42,5 @@
     $ps->execute();
 
     header('Location: ../frontend/Board.php',true, 307);
+    exit();
 ?>
