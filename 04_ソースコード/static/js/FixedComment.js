@@ -4,6 +4,8 @@ let add_fixed_button = document.querySelectorAll(".add_fixed_button");
 let remove_fixed_button = document.querySelectorAll(".remove_fixed_button");
 fixed_toggle_button.addEventListener("click", fixedtoggle);
 function fixedtoggle(){
+    add_fixed_button = document.querySelectorAll(".add_fixed_button");
+    remove_fixed_button = document.querySelectorAll(".remove_fixed_button");
     if(user_id == 0){
         alert("固定コメント機能を使うにはログインをしてください！");
         return;
@@ -240,7 +242,7 @@ function fixedCommentGood(e, board_id, comment_id, user_id, user_evaluation){
 function fixedCommentBad(e, board_id, comment_id, user_id, user_evaluation){
     let cTarget = e.currentTarget;
     cTarget.disabled = true;
-    cTarget.parentElement.children[2].disabled = true;
+    cTarget.parentElement.children[1].disabled = true;
     console.log(user_evaluation);
     const data = {
         board_id: board_id,
@@ -274,7 +276,7 @@ function fixedCommentBad(e, board_id, comment_id, user_id, user_evaluation){
                     fixedCommentGood(e, board_id, comment_id, user_id, 0);
                 };
                 cTarget.disabled = false;
-                cTarget.parentElement.children[2].disabled = false;
+                cTarget.parentElement.children[1].disabled = false;
             })
             .catch(error => {
                 console.log(error); // エラー表示
@@ -304,7 +306,7 @@ function fixedCommentBad(e, board_id, comment_id, user_id, user_evaluation){
                     fixedCommentGood(e, board_id, comment_id, user_id, -1);
                 };
                 cTarget.disabled = false;
-                cTarget.parentElement.children[2].disabled = false;
+                cTarget.parentElement.children[1].disabled = false;
             })
             .catch(error => {
                 console.log(error); // エラー表示
@@ -337,7 +339,7 @@ function fixedCommentBad(e, board_id, comment_id, user_id, user_evaluation){
                     fixedCommentGood(e, board_id, comment_id, user_id, 0);
                 };
                 cTarget.disabled = false;
-                cTarget.parentElement.children[2].disabled = false;
+                cTarget.parentElement.children[1].disabled = false;
             })
             .catch(error => {
                 console.log(error); // エラー表示
