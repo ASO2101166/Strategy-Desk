@@ -6,6 +6,9 @@
     }
     if(isset($_SESSION['user'])){
         $user = unserialize($_SESSION['user']);
+        $user_id = $user->user_id;
+    }else{
+        $user_id = 0;
     }
 ?>
 
@@ -28,7 +31,7 @@
         <!-- ヘッダー読み込み -->
         <?php include("Headline.php")?>
         <!-- --------------- -->
-        <input type="hidden" id="user_id" value="<?php echo $user->user_id?>">
+        <input type="hidden" id="user_id" value="<?php if(isset($_SESSION['user'])){echo $user_id;}?>">
         <div class="main">
             <!-- 左エリア -->
             <div class="add_content_area">
@@ -64,7 +67,7 @@
                             <div class="comment_user"><?php echo $comment['user_name']?></div>
                             <div class="comment_date"><?php echo $comment['comment_date']?></div>
                             <button class="add_fixed_button" hidden="true" onclick="addfixedcomment(event,<?php echo $_POST['board_id'] ?>, <?php echo $comment['comment_id'] ?>)">
-                                <div class="arrow_icon">
+                                <div class="arrow_icon" style="color:<?php if($comment['fixed_comment'] == 1){echo '#FFC122';}?>;">
                                     <i class="bi bi-arrow-up-left-circle-fill"></i>
                                 </div>
                             </button>
@@ -77,7 +80,7 @@
                         }else{
                             require_once '../backend/QuestionnaireCommentSelect.php';
                             $ClsQuestionnaireCommentSelect = new QuestionnaireCommentSelect();
-                            $searchArray = $ClsQuestionnaireCommentSelect->questionnaireCommentSelect($_POST['board_id'], $comment['questionary_id']);
+                            $searchArray = $ClsQuestionnaireCommentSelect->questionnaireCommentSelect($_POST['board_id'], $comment['questionary_id'], $user_id);
                     ?>
                     <div class="comment_questionnaire">
                         <h3 class="comment_questionnaire_title"><?php echo $searchArray['questionary_title']?></h3>
@@ -85,8 +88,8 @@
                             for($i = 0; $i < count($searchArray['questionary_detail']); $i++){
                         ?>
                         <div style="display: flex;">
-                            <div class="comment_questionnaire_detail"><?php echo $searchArray['questionary_detail'][$i]?></div>
-                            <div><?php echo $searchArray['questionary_votes'][$i]."票".$searchArray['questionary_percent'][$i]."%"?></div>
+                            <div class="comment_questionnaire_detail <?php if($searchArray['user_questionary_detail_id'] == $searchArray['questionary_detail_id'][$i]){echo "user_vote";}?>"><?php echo $searchArray['questionary_detail'][$i]?></div>
+                            <div><?php echo $searchArray['questionary_votes'][$i]."票".round($searchArray['questionary_percent'][$i], 1)."%"?></div>
                         </div>
                         <?php
                             }
@@ -114,12 +117,10 @@
             </div>
             <!-- 右エリア -->
             <div class="fixed_comment_area">
-                <button id="fixed_toggle_button">
-                    <div class="arrow_icon">
-                        <i id="fixed_toggle_icon" class="bi bi-arrow-up-left-circle-fill"></i>
-                    </div>
-                    <div id="fixed_status">OFF</div>
-                </button>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="fixed_toggle_button" style="height:15px;width:30px;">
+                    <label class="form-check-label" for="fixed_toggle_button" style="font-size:0.8rem;">固定コメント機能ボタン</label>
+                </div>
                 <?php
                     require_once '../backend/FixedCommentSelect.php';
                     $ClsFixedCommentSelect = new FixedCommentSelect();
@@ -128,13 +129,11 @@
                         $fixed_comments = [];
                     }
                     foreach($fixed_comments as $fixed_comment){
-
-                    
                 ?>
 
                 <div class="fixed_comment">
                     <div class="comment_info">
-                        <div class="comment_number"><?php echo $fixed_comment['comment_id']?></div>
+                        <div class="fixed_comment_number"><?php echo $fixed_comment['comment_id']?></div>
                         <div class="comment_user"><?php echo $fixed_comment['user_name']?></div>
                         <div class="comment_date"><?php echo $fixed_comment['comment_date']?></div>
                         <button class="remove_fixed_button" onclick="removefixedcomment(event,<?php echo $fixed_comment['board_id'] ?>, <?php echo $fixed_comment['comment_id'] ?>)" hidden="true">
@@ -146,6 +145,28 @@
                     <div class="comment_content">
                         <div class="comment_text"><?php echo $fixed_comment['comment_content']?></div>
                     </div>
+                    <?php
+                        require_once '../backend/FixedCommentEvaluationSelect.php';
+                        $ClsFixedCommentEvaluationSelect = new FixedCommentEvaluationSelect();
+                        $fixed_comment_count = $ClsFixedCommentEvaluationSelect->fixedCommentEvaluationSelect($fixed_comment['board_id'], $fixed_comment['comment_id']);
+                        $fixed_comment_user = $ClsFixedCommentEvaluationSelect->fixedCommentEvaluationUser($fixed_comment['board_id'], $fixed_comment['comment_id'], $user_id);
+                        
+                    ?>
+                    <div id="fixed_evalution_area">
+                        <input class="fixed_comment_user_evaluation" type="hidden" value="<?php echo $fixed_comment_user[0]['evaluation'];?>">
+                        <button class="fixed_good" onclick="fixedCommentGood(event,<?php echo $fixed_comment['board_id'].','.$fixed_comment['comment_id'].','.$user_id.','.$fixed_comment_user[0]['evaluation']?>)">
+                            <i class="bi bi-hand-thumbs-up" <?php if($fixed_comment_user[0]['evaluation'] == 1){echo "hidden";}?>></i>
+                            <i class="bi bi-hand-thumbs-up-fill" style="color:red;" <?php if($fixed_comment_user[0]['evaluation'] != 1){echo "hidden";}?>></i>
+                            <span class="evaluation_count_good"><?php echo $fixed_comment_count[0]['high']?></span>
+                        </button>
+                        <button class="fixed_bad" onclick="fixedCommentBad(event,<?php echo $fixed_comment['board_id'].','.$fixed_comment['comment_id'].','.$user_id.','.$fixed_comment_user[0]['evaluation']?>)">
+                            <i class="bi bi-hand-thumbs-down" <?php if($fixed_comment_user[0]['evaluation'] == 0){echo "hidden";}?>></i>
+                            <i class="bi bi-hand-thumbs-down-fill" style="color:blue;" <?php if($fixed_comment_user[0]['evaluation'] != 0){echo "hidden";}?>></i>
+                            <span class="evaluation_count_bad"><?php echo $fixed_comment_count[0]['low']?></span>
+                        </button>
+                    </div>
+                    <?php
+                    ?>
                 </div>
                 <?php
                     }

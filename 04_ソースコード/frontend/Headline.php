@@ -2,7 +2,9 @@
 <header id="headline" class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="Home.php">◀</a>
+      <a class="" href="Home.php">
+        <img src="logo.png" height="40px" width="40px">
+      </a>
       <div class="input-group w-50">
         <button id="search_button" onclick="search_board()" hidden="true">
           <span class="input-group-text">

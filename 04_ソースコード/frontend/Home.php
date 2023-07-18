@@ -28,7 +28,7 @@
         <div id="main"> 
             <div id="main_area">
                 <button id="creation" type="button">
-                    <div>掲示板立ち上げ</div>
+                    <div style="font-size: 1.4rem;">掲示板立ち上げ</div>
                 </button>
                 <!-- 掲示板立ち上げ画面表示 -->
                 <div id="launch_background" hidden="true"></div>

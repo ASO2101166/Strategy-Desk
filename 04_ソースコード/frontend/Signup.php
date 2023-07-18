@@ -27,8 +27,8 @@
                     <?php
                         }
                     ?>
-                    ユーザー名<input type="text" name="uname"><br>
-                    パスワード<input type="password"name="upwd"><br>
+                    ユーザー名<input type="text" name="uname" required><br>
+                    パスワード<input type="password"name="upwd" required><br>
                 </div>
                 <input type="submit"value="新規登録">
                 <a href="Login.php">ログインはこちら</a>

@@ -160,3 +160,6 @@ textarea {
     outline: none;
     color: #1b2538;
 }
+.user_vote {
+    background-color:aquamarine;
+}
