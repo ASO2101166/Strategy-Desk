@@ -1,3 +1,12 @@
+div {
+    color: #3e3e3e;
+}
+h1 {
+    color: #3e3e3e;
+}
+h3 {
+    color: #3e3e3e;
+}
 button{
     background-color: transparent;
     border: none;
@@ -66,6 +75,7 @@ br {
     width: 70vw;
     text-align: left;
     margin-left:auto;margin-right:auto;
+    margin-bottom: 3%;
     background-color: lightgrey; 
     border: 1px solid #000;
 }

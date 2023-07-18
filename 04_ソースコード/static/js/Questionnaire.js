@@ -44,9 +44,9 @@ function questionaryCheck(){
         console.log(new Date(res['questionary_date']));
         console.log((new Date() - new Date(res['questionary_date'])) / 1000);
         let time = document.getElementById("time");
-        if((new Date() - new Date(res['questionary_date'])) / 1000 < 900){
+        if((new Date() - new Date(res['questionary_date'])) / 1000 < 600){
             showQuestionarySelect();
-            time.innerHTML = "残り" + Math.trunc((900 - (new Date() - new Date(res['questionary_date'])) / 1000) / 60) + "分" + Math.trunc((900 - (new Date() - new Date(res['questionary_date'])) / 1000) % 60) + "秒";
+            time.innerHTML = "残り" + Math.trunc((600 - (new Date() - new Date(res['questionary_date'])) / 1000) / 60) + "分" + Math.trunc((600 - (new Date() - new Date(res['questionary_date'])) / 1000) % 60) + "秒";
             let getquestionary_detail_id = getQuestionaryVote(res['board_id'],res['questionary_id'],user_id);
             let questionary_detail_id;
             getquestionary_detail_id.then(function(response){

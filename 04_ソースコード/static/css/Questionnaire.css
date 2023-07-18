@@ -1,6 +1,9 @@
 body {
   margin: 0;
 }
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #caf4ff inset;
+}
 button{
   background-color: transparent;
   border: none;
@@ -16,6 +19,9 @@ button{
   /* background-color: blue; */
   border-right: 1px solid gray;
 }
+#questionary_title_text:not(:placeholder-shown) {
+  background-color: #caf4ff;
+}
 #questionary_detail_area {
   margin: 3%;
 }
@@ -29,11 +35,15 @@ button{
   background-color: #e7e7e7;
   outline: none;
 	color: #1b2538;
+  border: 1px solid #b5b5b5;
 	/* font-size: 1.2rem; */
 }
 .questionary_detail_text:focus {
   
   border: 1px solid #1b2538;
+}
+.questionary_detail_text:not(:placeholder-shown) {
+  background-color: #caf4ff;
 }
 .questionary_submit_btn{
   width: 20%;

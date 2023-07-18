@@ -40,8 +40,8 @@
                 <?php
                     }
                 ?>
-                ユーザー名<input type="text" name="uname"><br>
-                パスワード<input type="password"name="upwd"><br>
+                ユーザー名<input type="text" name="uname" required><br>
+                パスワード<input type="password"name="upwd" required><br>
             </div>
             <input type="submit" value="ログイン">
             <a href="Signup.php">新規登録はこちら</a>
