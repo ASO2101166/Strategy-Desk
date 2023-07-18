@@ -68,7 +68,9 @@ button{
   position: absolute;
 }
 #select_questionary_title {
-  background-color: aqua;
+  border: 1px solid #1b2538;
+  font-size: 24px;
+  font-weight: bold;
   word-break: break-word;
 }
 .select_questionary_detail_area {

@@ -4,6 +4,10 @@ let add_fixed_button = document.querySelectorAll(".add_fixed_button");
 let remove_fixed_button = document.querySelectorAll(".remove_fixed_button");
 fixed_toggle_button.addEventListener("click", fixedtoggle);
 function fixedtoggle(){
+    if(user_id == 0){
+        alert("固定コメント機能を使うにはログインをしてください！");
+        return;
+    }
     if(fixed_toggle_button.checked == false){
         add_fixed_button.forEach(function(target){
             target.hidden = true;
@@ -11,7 +15,6 @@ function fixedtoggle(){
         remove_fixed_button.forEach(function(target){
             target.hidden = true;
         });
-        fixed_toggle_icon.style.color = "gray";
     }else{
         add_fixed_button.forEach(function(target){
             target.hidden = false;
@@ -22,11 +25,12 @@ function fixedtoggle(){
     }
 }
 
-function addfixedcomment(e,board_id,comment_id){
+function addfixedcomment(e,board_id,comment_id,user_id){
     e.currentTarget.children[0].style.color = "#FFC122";
     const data = {
         board_id: board_id,
         comment_id: comment_id,
+        user_id: user_id
     }
     fetch('../backend/FixedCommentCreation.php', {
         method: "POST",
@@ -41,7 +45,7 @@ function addfixedcomment(e,board_id,comment_id){
     })
     .then(res => {
         if(res == "Already fixed!"){
-            alert("既に固定コメントに登録されています");
+            alert("既に固定コメントに登録されています!");
             console.log(res);
             clone_tag = clone_fixed_comment.cloneNode(true)
             clone_fixed_comment = document.getElementById("clone_fixed_comment");
@@ -58,6 +62,27 @@ function addfixedcomment(e,board_id,comment_id){
                 removefixedcomment(e,argument1, argument2);
             };
             clone_tag.children[1].children[0].innerHTML = res['comment_content'];
+            clone_tag.children[2].children[0].value = res['user_evaluation'];
+            clone_tag.children[2].children[1].onclick = function(e) {
+                fixedCommentGood(e, res['board_id'], res['comment_id'], res['user_id'], res['user_evaluation']);
+            };
+            clone_tag.children[2].children[2].onclick = function(e) {
+                fixedCommentBad(e, res['board_id'], res['comment_id'], res['user_id'], res['user_evaluation']);
+            };
+            if(res['user_evaluation'] == 1){
+                clone_tag.children[2].children[1].children[0].hidden = true;
+            }
+            if(res['user_evaluation'] != 1){
+                clone_tag.children[2].children[1].children[1].hidden = true;
+            }
+            if(res['user_evaluation'] == 0){
+                clone_tag.children[2].children[2].children[0].hidden = true;
+            }
+            if(res['user_evaluation'] != 0){
+                clone_tag.children[2].children[2].children[1].hidden = true;
+            }
+            clone_tag.children[2].children[1].children[2].innerHTML = res['fixed_comment_count_high'];
+            clone_tag.children[2].children[2].children[2].innerHTML = res['fixed_comment_count_low'];
             clone_tag.removeAttribute("id");
             clone_tag.setAttribute("class", "fixed_comment");
             clone_tag.style.display = "block";
@@ -73,11 +98,10 @@ function removefixedcomment(e,board_id,comment_id){
     let comment_number = document.querySelectorAll('.comment_number');
     let fixed_comment_number = e.currentTarget.parentElement.children[0].innerHTML;
     comment_number.forEach(function(a){
-        if(a.innerHTML == fixed_comment_number){ 
+        if(a.innerHTML.substr(3,a.innerHTML.length - 3) == fixed_comment_number){ 
             a.parentElement.children[3].children[0].style.color = "gray";
         }
     });
-    console.log();
     const data = {
         board_id: board_id,
         comment_id: comment_id,
@@ -96,13 +120,16 @@ function removefixedcomment(e,board_id,comment_id){
     .then(res => {
         let fixed_comment = remove_fixed_button.parentElement.parentElement;
         fixed_comment.remove();
-        console.log(fixed_comment);
     })
     .catch(error => {
         console.log(error); // エラー表示
     });
 }
 function fixedCommentGood(e, board_id, comment_id, user_id, user_evaluation){
+    if(user_id == 0){
+        alert("コメント評価機能を使うにはログインをしてください！");
+        return;
+    }
     let cTarget = e.currentTarget;
     cTarget.disabled = true;
     cTarget.parentElement.children[2].disabled = true;

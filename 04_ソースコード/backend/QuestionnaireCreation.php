@@ -3,7 +3,10 @@
         session_start();
     }
     require_once 'Dbconect.php';
-
+    if(!isset($_SESSION['user'])){
+        header('Location: ../frontend/Login.php',true, 307);
+        exit();
+    }
     $board_id = $_POST['board_id'];
     $questionary_title = $_POST['questionary_title'];
     $questionary_detail = $_POST['questionary_detail'];
@@ -71,4 +74,5 @@
         }
     }
     header('Location: ../frontend/Board.php',true, 307);
+    exit();
 ?>
