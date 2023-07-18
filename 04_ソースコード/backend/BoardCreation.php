@@ -17,7 +17,7 @@
         $ps->execute();
         $bid = $pdo->lastInsertId();
         $sql2 = 'INSERT INTO comments(board_id,comment_id,comment_content,fixed_comment,comment_date,map_id,parent_board_id,parent_comment_id,user_id)
-                 VALUES(?,1,?,0,CURRENT_DATE,null,null,null,?)';
+                 VALUES(?,1,?,0,cast(NOW() AS DATETIME),null,null,null,?)';
         
         $ps2 = $pdo->prepare($sql2);
         $ps2->bindValue(1,$bid,PDO::PARAM_INT);
