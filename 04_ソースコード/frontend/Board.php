@@ -4,6 +4,10 @@
     if(!isset($_SESSION)){
         session_start();
     }
+    if(!isset($_POST['board_id'])){
+        header('Location: ../frontend/Home.php',true, 307);
+        exit();
+    }
     if(isset($_SESSION['user'])){
         $user = unserialize($_SESSION['user']);
         $user_id = $user->user_id;
