@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="../static/css/Questionnaire.css">
     </head>
     <body>
-        <div id="create_questionary_area" style="margin: 5%;" hidden="true">
-            <form action="../backend/QuestionnaireCreation.php" method="post">
+        <div id="create_questionary_area" hidden="true">
+            <form action="../backend/QuestionnaireCreation.php" id="questionnaire_form" method="post">
                 <input type="hidden" id="board_id" name="board_id" value="<?php echo $_POST['board_id']?>">
                 <input type="text" id="questionary_title_text" class="form-control" name="questionary_title" placeholder="アンケート題名" required>
                 <div id="questionary_detail_area">
@@ -35,12 +35,10 @@
                     <button id="add_tag_button" type="button">
                         <i class="bi bi-plus-square"></i>
                     </button>
-                    <button type="submit" class="questionary_submit_btn">
-                        <i class="bi bi-send-fill"></i>
-                    </button>
                 </div>
             </form>
         </div>
+        
         <div id="select_questionary_area" style="margin: 5%;" hidden="true">
             <div id="select_questionary_title">この中で一番いいのはどれですか？？？？？？？？？？？？？？？？？？</div>
             

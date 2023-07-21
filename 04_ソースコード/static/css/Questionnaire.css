@@ -22,6 +22,12 @@ button{
 #questionary_title_text:not(:placeholder-shown) {
   background-color: #caf4ff;
 }
+#create_questionary_area {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 15%;
+}
 #questionary_detail_area {
   margin: 3%;
 }
@@ -49,6 +55,7 @@ button{
   width: 20%;
   height:5%;
   position:absolute;
+  margin-top: 5%;
   bottom:0;
   right:0;
   background-color:aquamarine;

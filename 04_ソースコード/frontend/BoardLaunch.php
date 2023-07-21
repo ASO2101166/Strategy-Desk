@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="../static/css/BoardLaunch.css">
     </head>
     <body>
-        <div class="main">
+        <div class="main" style="height: 60vh;overflow-y: scroll;">
             <h2 class="midashi">掲示板立ち上げ</h2>
             <form action="../backend/BoardCreation.php" method="post">
                 <!-- 議題名 -->

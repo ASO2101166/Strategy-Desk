@@ -5,12 +5,14 @@
     require_once "Dbconect.php";
     require_once "FixedCommentSelect.php";
     require_once 'FixedCommentEvaluationSelect.php';
+    require_once 'Sanitize.php';
     $raw = file_get_contents('php://input');
     $data = json_decode($raw,true);
 
     $dbcon = new Dbconect();
     $ClsFixedCommentSelect = new FixedCommentSelect();
     $ClsFixedCommentEvaluationSelect = new FixedCommentEvaluationSelect();
+    $ClsSanitize = new Sanitize();
     $pdo = $dbcon->dbConnect();
 
     $fixed_comment = $ClsFixedCommentSelect->fixedCommentCheck($data['board_id'],$data['comment_id']);
@@ -27,7 +29,7 @@
                          'user_id'=>$fixed_comment['user_id'],
                          'user_name'=>$fixed_comment['user_name'],
                          'comment_date'=>$fixed_comment['comment_date'],
-                         'comment_content'=>$fixed_comment['comment_content'],
+                         'comment_content'=>$ClsSanitize->sanitize_br($fixed_comment['comment_content']),
                          'board_id'=>$fixed_comment['board_id'],
                          'comment_id'=>$fixed_comment['comment_id'],
                          'user_evaluation'=>$fixed_comment_user[0]['evaluation'],

@@ -10,6 +10,7 @@ function gotfocus(){
     add_boardsearch_area.hidden = false;
     search_button.hidden = false;
     search_delete_button.hidden = false;
+    window.addEventListener("keydown", isEnter);
 }
 function lostfocus(){
     if( this.value.length == 0 ) {
@@ -17,6 +18,7 @@ function lostfocus(){
         add_boardsearch_area.hidden = true;
         search_button.hidden = true;
         search_delete_button.hidden = true;
+        window.removeEventListener("keydown", isEnter);
     }
 }
 function search_delete(){
@@ -25,4 +27,10 @@ function search_delete(){
     add_boardsearch_area.hidden = true;
     search_button.hidden = true;
     search_delete_button.hidden = true;
+    window.removeEventListener("keydown", isEnter);
+}
+function isEnter(e){
+    if(e.key == "Enter"){
+        search_board();
+    }
 }

@@ -49,15 +49,20 @@
                     <div>アンケート</div>
                     <div class="plus"></div>
                 </div> -->
-                <div id="test" style="height: 90%; position: relative;">
+                <div id="questionnaire_main" style="height: 100%; position: relative; overflow:scroll;">
                     <?php include("Questionnaire.php")?>
                 </div>
+                <button type="submit" form="questionnaire_form" class="questionary_submit_btn">
+                    <i class="bi bi-send-fill"></i>
+                </button>
             </div>
             <!-- 中央エリア -->
             <div class="comment_area">
                 <?php
                     require_once '../backend/CommentSelect.php';
+                    require_once '../backend/Sanitize.php';
                     $ClsCommentSelect = new CommentSelect();
+                    $ClsSanitize = new Sanitize();
                     $comments = $ClsCommentSelect->commentSelect($_POST['board_id']);
                     foreach($comments as $comment){
 
@@ -77,7 +82,7 @@
                             </button>
                         </div>
                         <div class="comment_content">
-                            <div class="comment_text"><?php echo $comment['comment_content']?></div>
+                            <div class="comment_text"><?php echo $ClsSanitize->sanitize_br($comment['comment_content'])?></div>
                         </div>
                     </div>
                     <?php
@@ -148,7 +153,7 @@
                         </button>
                     </div>
                     <div class="comment_content">
-                        <div class="comment_text"><?php echo $fixed_comment['comment_content']?></div>
+                        <div class="comment_text"><?php echo $ClsSanitize->sanitize_br($fixed_comment['comment_content'])?></div>
                     </div>
                     <?php
                         require_once '../backend/FixedCommentEvaluationSelect.php';
