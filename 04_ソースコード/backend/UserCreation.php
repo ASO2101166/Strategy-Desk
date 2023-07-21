@@ -9,6 +9,7 @@
     $upwd = $_POST['upwd'];
     if($ClsUserSelect->userselectcheckbynamepass($uname, $upwd)){
         header('Location: ../frontend/Signup.php?error',true, 307);
+        exit();
     }
     $sql = "INSERT INTO users(user_id,user_name,password) VALUES(null,?,?)";
     $ps = $pdo->prepare($sql);

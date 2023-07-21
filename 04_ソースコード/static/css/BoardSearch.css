@@ -1,8 +1,4 @@
-br {
-    display: block;
-    content: "";
-    margin: 10px 0;
-}
+
 .search_board_area {
     width: 70vw;
     text-align: left;

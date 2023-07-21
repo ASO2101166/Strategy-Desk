@@ -11,12 +11,19 @@ overflow: hidden;
 }
 .add_content_area {
     position: fixed;
-    height:100vh;
+    height:calc(100vh - 56px);
     width: 26vw;
     /* background-color: blue; */
     border-right: 1px solid gray;
 }
-
+#questionnaire_main {
+    height: 100%;
+    position: relative;
+    overflow:scroll;
+}
+#questionnaire_main::-webkit-scrollbar {
+    display: none;
+}
 .plus {
     display: inline-block;
     width: 20px;
