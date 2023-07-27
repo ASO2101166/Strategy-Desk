@@ -4,6 +4,7 @@ let add_fixed_button = document.querySelectorAll(".add_fixed_button");
 let remove_fixed_button = document.querySelectorAll(".remove_fixed_button");
 fixed_toggle_button.addEventListener("click", fixedtoggle);
 function fixedtoggle(){
+    let user_id = document.getElementById('user_id').value;
     add_fixed_button = document.querySelectorAll(".add_fixed_button");
     remove_fixed_button = document.querySelectorAll(".remove_fixed_button");
     if(user_id == 0){
@@ -66,10 +67,10 @@ function addfixedcomment(e,board_id,comment_id,user_id){
             clone_tag.children[1].children[0].innerHTML = res['comment_content'];
             clone_tag.children[2].children[0].value = res['user_evaluation'];
             clone_tag.children[2].children[1].onclick = function(e) {
-                fixedCommentGood(e, res['board_id'], res['comment_id'], res['user_id'], res['user_evaluation']);
+                fixedCommentGood(e, res['board_id'], res['comment_id'], user_id, res['user_evaluation']);
             };
             clone_tag.children[2].children[2].onclick = function(e) {
-                fixedCommentBad(e, res['board_id'], res['comment_id'], res['user_id'], res['user_evaluation']);
+                fixedCommentBad(e, res['board_id'], res['comment_id'], user_id, res['user_evaluation']);
             };
             if(res['user_evaluation'] == 1){
                 clone_tag.children[2].children[1].children[0].hidden = true;
@@ -240,6 +241,10 @@ function fixedCommentGood(e, board_id, comment_id, user_id, user_evaluation){
     }
 }
 function fixedCommentBad(e, board_id, comment_id, user_id, user_evaluation){
+    if(user_id == 0){
+        alert("コメント評価機能を使うにはログインをしてください！");
+        return;
+    }
     let cTarget = e.currentTarget;
     cTarget.disabled = true;
     cTarget.parentElement.children[1].disabled = true;

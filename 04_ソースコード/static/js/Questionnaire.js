@@ -1,11 +1,10 @@
-let tag_area,clone_tag,add_tag_button,user_id;
+let tag_area,clone_tag,add_tag_button;
 window.onload = function(){
     // ページ読み込み時に実行したい処理
     board_creation_form = document.getElementById("board_creation_form");
     clone_questionary_detail = document.getElementById("clone_questionary_detail");
     add_tag_button = document.getElementById("add_tag_button");
     add_tag_button.firstElementChild.addEventListener("click", add_tag_area);
-    user_id = document.getElementById('user_id').value;
     console.log(user_id);
     questionaryCheck();
     
@@ -22,6 +21,7 @@ function delete_questionary_detail(e){
 }
 
 function questionaryCheck(){
+    let user_id = document.getElementById('user_id').value;
     let board_id = document.getElementById('board_id').value;
     data = {
         board_id: board_id
@@ -66,7 +66,8 @@ function questionaryCheck(){
                         clone_tag.onclick = function(e) {
                             var argument1 = res['board_id'];
                             var argument2 = res['questionary_id'];
-                            QuestionaryVote(e, argument1, argument2);
+                            var argument3 = user_id;
+                            QuestionaryVote(e, argument1, argument2, argument3);
                         };
                     }
                     if(questionary_detail_id == res['questionary_detail_id'][i]){
@@ -127,7 +128,7 @@ function showQuestionaryCreate() {
     create_questionary_area.hidden = false;
     console.log("!");
 }
-function QuestionaryVote(e, board_id, questionary_id){
+function QuestionaryVote(e, board_id, questionary_id, user_id){
     console.log(user_id);
     let cTarget = e.currentTarget;
     questionary_detail_id = cTarget.children[0].value;
