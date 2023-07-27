@@ -40,13 +40,18 @@ function questionaryCheck(){
     .then(res => {
         let select_questionary_area = document.getElementById('select_questionary_area');
         console.log(res);
-        console.log(new Date());
+        console.log(new Date(res['now_date']));
         console.log(new Date(res['questionary_date']));
-        console.log((new Date() - new Date(res['questionary_date'])) / 1000);
+        let timediff_sec = Math.trunc((new Date(res['now_date']) - new Date(res['questionary_date'])) / 1000);
+        console.log(timediff_sec);
         let time = document.getElementById("time");
-        if((new Date() - new Date(res['questionary_date'])) / 1000 < 600){
+        if(res['questionary_status'] == 1){
             showQuestionarySelect();
-            time.innerHTML = "残り" + Math.trunc((600 - (new Date() - new Date(res['questionary_date'])) / 1000) / 60) + "分" + Math.trunc((600 - (new Date() - new Date(res['questionary_date'])) / 1000) % 60) + "秒";
+            if(Math.trunc((600 - timediff_sec) / 60) <= 0){
+                time.innerHTML = "残り1分未満";
+            }else{
+                time.innerHTML = "残り" + Math.trunc((600 - timediff_sec) / 60)  + "分";
+            }
             let getquestionary_detail_id = getQuestionaryVote(res['board_id'],res['questionary_id'],user_id);
             let questionary_detail_id;
             getquestionary_detail_id.then(function(response){
@@ -76,9 +81,9 @@ function questionaryCheck(){
             
         }else{
             showQuestionaryCreate();
-            if(res['questionary_status'] == 1){
-                endQuestionnaire(res['board_id'], res['questionary_id']);
-            }
+            // if(res['questionary_status'] == 1){
+            //     endQuestionnaire(res['board_id'], res['questionary_id']);
+            // }
         }
     })
     .catch(error => {
@@ -124,14 +129,8 @@ function showQuestionaryCreate() {
 }
 function QuestionaryVote(e, board_id, questionary_id){
     console.log(user_id);
-    questionary_detail_id = e.currentTarget.children[0].value;
-    e.currentTarget.style.backgroundColor = "aquamarine";
-    let select_questionary_detail_area = document.querySelectorAll(".select_questionary_detail_area");
-    select_questionary_detail_area.forEach(function(element) {
-        element.onclick = () =>{
-            return false;
-        }
-    })
+    let cTarget = e.currentTarget;
+    questionary_detail_id = cTarget.children[0].value;
     data = {
         board_id: board_id,
         questionary_id: questionary_id,
@@ -151,34 +150,44 @@ function QuestionaryVote(e, board_id, questionary_id){
     })
     .then(res => {
         console.log(res);
-
+        if(res == "VoteNG"){
+            alert("このアンケートは終了しました！ページを再読み込みしてください");
+        }else{
+            cTarget.style.backgroundColor = "aquamarine";
+            let select_questionary_detail_area = document.querySelectorAll(".select_questionary_detail_area");
+            select_questionary_detail_area.forEach(function(element) {
+                element.onclick = () =>{
+                    return false;
+                }
+            })
+        }
     })
     .catch(error => {
         console.log(error); // エラー表示
     });
 }
-function endQuestionnaire(board_id, questionary_id){
-    data = {
-        board_id: board_id,
-        questionary_id: questionary_id,
-        user_id: user_id
-    }
-    fetch('../backend/QuestionnaireCommentPost.php', {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    })
-    .then((response) => {
-        if(!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }   
-        return response.json()
-    })
-    .then(res => {
-        console.log(res);
+// function endQuestionnaire(board_id, questionary_id){
+//     data = {
+//         board_id: board_id,
+//         questionary_id: questionary_id,
+//         user_id: user_id
+//     }
+//     fetch('../backend/QuestionnaireCommentPost.php', {
+//         method: "POST",
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(data)
+//     })
+//     .then((response) => {
+//         if(!response.ok) {
+//             throw new Error(`HTTP error: ${response.status}`);
+//         }   
+//         return response.json()
+//     })
+//     .then(res => {
+//         console.log(res);
 
-    })
-    .catch(error => {
-        console.log(error); // エラー表示
-    });
-}
+//     })
+//     .catch(error => {
+//         console.log(error); // エラー表示
+//     });
+// }

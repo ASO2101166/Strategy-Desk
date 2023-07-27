@@ -5,7 +5,8 @@
 
     $cls = new Dbconect();
     $pdo = $cls->dbConnect();
-    $sql = "SELECT q.*, GROUP_CONCAT(qd.questionary_detail_id) AS questionary_detail_ids, GROUP_CONCAT(qd.questionary_detail) AS questionary_details
+    $sql = "SELECT q.*, cast(NOW() AS DATETIME) AS now_date, GROUP_CONCAT(qd.questionary_detail_id) AS questionary_detail_ids,
+                   GROUP_CONCAT(qd.questionary_detail) AS questionary_details
             FROM questionaires AS q
             INNER JOIN questionary_details AS qd
             ON q.board_id = qd.board_id
@@ -26,6 +27,7 @@
         $retArray['questionary_id'] = $questionary_date['questionary_id'];
         $retArray['questionary_title'] = $questionary_date['questionary_title'];
         $retArray['questionary_date'] = $questionary_date['questionary_date'];
+        $retArray['now_date'] = $questionary_date['now_date'];
         $retArray['questionary_status'] = $questionary_date['questionary_status'];
         $ids = explode(",", $questionary_date['questionary_detail_ids']);
         $details = explode(",", $questionary_date['questionary_details']);

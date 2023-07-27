@@ -13,6 +13,7 @@
     <body>
         <div id="create_questionary_area" hidden="true">
             <form action="../backend/QuestionnaireCreation.php" id="questionnaire_form" method="post">
+                <input type="hidden" name="user_id" value="<?php echo $user_id?>">
                 <input type="hidden" id="board_id" name="board_id" value="<?php echo $_POST['board_id']?>">
                 <input type="text" id="questionary_title_text" class="form-control" name="questionary_title" placeholder="アンケート題名" required>
                 <div id="questionary_detail_area">
